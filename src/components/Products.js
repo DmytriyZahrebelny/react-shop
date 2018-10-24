@@ -1,35 +1,16 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import styled from 'styled-components';
-import Product from './ProductForm';
-
-const ListProduct = styled.ul`
-  position: relative;
-  list-style: none;
-`;
-
-const ItemProduct = styled.li`
-  padding: 10px;
-`
-
-const LinkProduct = styled(Link)`
-  font-size: 16px;
-  color: black;
-
-  :visit {
-    color: black;
-  }
- }
-`
+import { Route } from 'react-router-dom';
+import { ListProduct, ItemProduct, LinkProduct } from '../style/adminSyle';
+import Change from './ChangeProduct';
 
 const Products = ({ products, createNewData }) => {
   const product = products.map((product) => {
     return (
       <ItemProduct key={product.id}>
-        <LinkProduct to={`/admin/${product.id}`}>{product.title}</LinkProduct>
-        <Route path={`/admin/${product.id}`} 
+        <LinkProduct to={`/admin/change/${product.id}`}>{product.title}</LinkProduct>
+        <Route path={`/admin/change/${product.id}`} 
           render={
-            () => <Product createNewData={createNewData} product={product}></Product>
+            () => <Change createNewData={createNewData} product={product} />
           }
         />
       </ItemProduct>
