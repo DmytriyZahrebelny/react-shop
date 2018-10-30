@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormContainer, ItemField, DescriptionsField, Fieldset, InputText, InputSubmit } from '../style/adminSyle';
+import { FormContainer, ItemField, DescriptionsField, Fieldset, InputText, InputSubmitAdd, Legend } from '../style/adminSyle';
 
 class NewProduct extends Component {
   constructor(props) {
@@ -27,30 +27,30 @@ class NewProduct extends Component {
         <FormContainer>
           <ItemField>
             <Fieldset>
-              <legend>Name product</legend>
+              <Legend>Name product</Legend>
               <InputText type="text" name="title" placeholder="Add title" required />
             </Fieldset>
           </ItemField>
           <ItemField>
             <Fieldset>
-              <legend>Description product</legend>
+              <Legend>Description product</Legend>
               <DescriptionsField name="description" placeholder="Add description" required></DescriptionsField>
             </Fieldset>
           </ItemField>
           <ItemField>
             <Fieldset>
-              <legend>Price product</legend>
+              <Legend>Price product</Legend>
               <InputText type="number" name="price" placeholder="Add price" required />
             </Fieldset>
           </ItemField>
           <ItemField>
             <Fieldset>
-              <legend>Image url product</legend>
+              <Legend>Image url product</Legend>
               <InputText type="text" name="url" placeholder="Add url" required />
             </Fieldset>
           </ItemField>
           <ItemField>
-            <InputSubmit type="submit" />
+            <InputSubmitAdd type="submit" />
           </ItemField>
         </FormContainer>
       </form>

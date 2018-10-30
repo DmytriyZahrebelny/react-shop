@@ -1,15 +1,52 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-// DeleteProducts
+// App
+
+export const AppBox = styled.div`
+  width: 1200px;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+`;
+
+export const Header = styled.header`
+  border-bottom: 2px solid #FF8F33;
+`;
+
+export const HeaderNav = styled.ul`
+  padding: 0;
+  list-style: none;
+`;
+
+
+export const HeaderLink = styled(Link)`
+  display: block;
+  padding: 20px;
+  font-size: 18px;
+  color: #FF5122;
+`;
+
+// Admin
+
+export const AdminContaine = styled.div`
+  display: flex;
+`;
 
 export const AdminLinks = styled(Link)`
+  display: block;
   font-size: 20px;
+  padding: 12px;
   margin-right: 20px;
+  color: #FB4128;
+  text-decoration: none;
 
   :visited {
-    color: black;
+    color: #FB4128;
   };
+`
+
+export const AdminMenu = styled.div`
+  width: 260px;
 `
 
 // Products
@@ -24,11 +61,15 @@ export const ItemProduct = styled.li`
 `;
 
 export const LinkProduct = styled(Link)`
+  display: inline-block;
+  padding: 4px 0;
   font-size: 16px;
   color: black;
+  color: #EB6300;
+  text-decoration: none;
 
   :visit {
-    color: black;
+    color: #EB6300;
   }
  }
 `;
@@ -46,7 +87,7 @@ export const ListField = styled.ul`
   content: "";
   width: 500px;
   height: 500px;
-  left: 400px;
+  left: 312px;
   top: 0;
   list-style: none;
 `;
@@ -58,11 +99,13 @@ export const ItemField = styled.li`
 export const CurrentValue = styled.span`
   margin-left: 10px;
   font-size: 16px;
+  color: #FFD933;
 `;
 
 export const ItemParam = styled.span`
   font-size: 18px;
   font-weight: bold;
+  color: #FF8F33;
 `;
 
 export const TextareaField = styled.textarea`
@@ -73,6 +116,7 @@ export const TextareaField = styled.textarea`
 
 export const Fieldset = styled.fieldset`
   margin-top: 20px;
+  border: 2px solid #FF8F33;
 `;
 
 export const InputText = styled.input`
@@ -81,9 +125,33 @@ export const InputText = styled.input`
   padding: 6px 0;
 `;
 
-export const InputSubmit = styled.input`
-  margin-top: 10px;
+export const InputSubmitAdd = styled.input`
+  display: block;
+  width: 200px;
+  margin: 10px auto 0;
+  padding: 12px;
+  font-size: 18px;
+  color: #FF8F33;
+  background-color: #ffffff;
+  border: 2px solid #FF8F33;
+  border-radius: 25px;
 `;
+
+export const InputSubmitChange = styled.input`
+  display: block;
+  width: 161px;
+  margin: 10px auto 0;
+  padding: 7px;
+  font-size: 16px;
+  color: #FF8F33;
+  background-color: #ffffff;
+  border: 2px solid #FF8F33;
+  border-radius: 25px;
+`;
+
+export const Legend = styled.legend`
+  color: #FF8F33;
+`
 
 // NewProduct
 

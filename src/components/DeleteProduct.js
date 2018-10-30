@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListProduct, ItemProduct, DeleteElement } from '../style/adminSyle';
+import { ListProduct, LinkProduct, ItemProduct, DeleteElement } from '../style/adminSyle';
 
 class DeleteProducts extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class DeleteProducts extends Component {
     const product = products.map((product) => {
       return (
         <ItemProduct key={product.id}>
-          <a href="#">{product.title}</a>
+          <LinkProduct to="#">{product.title}</LinkProduct>
           <DeleteElement onClick={this.deleteElement} id={product.id}>X</DeleteElement>
         </ItemProduct>
       );

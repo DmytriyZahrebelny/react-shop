@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { dataProducts } from '../data/dataProducts';
-import { AdminLinks } from '../style/adminSyle';
+import { AdminLinks, AdminMenu, AdminContaine } from '../style/adminSyle';
 import Products from '../components/Products';
 import NewProduct from '../components/NewProduct';
 import DeleteProduct from '../components/DeleteProduct';
@@ -44,12 +44,12 @@ class AdminPage extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <AdminContaine>
+        <AdminMenu>
           <AdminLinks to="/admin/change">Change parameters and descriptions</AdminLinks>
           <AdminLinks to="/admin/add">Add new product</AdminLinks>
           <AdminLinks to="/admin/delete">Delete product</AdminLinks>
-        </div>
+        </AdminMenu>
         <div>
           <Route path="/admin/change"
              render={
@@ -67,7 +67,7 @@ class AdminPage extends Component {
             } 
           />
         </div>
-      </div>
+      </AdminContaine>
     )
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListField, ItemField, CurrentValue, ItemParam, TextareaField, Fieldset, InputText, InputSubmit } from '../style/adminSyle';
+import { ListField, ItemField, CurrentValue, ItemParam, TextareaField, Fieldset, InputText, Legend, InputSubmitChange } from '../style/adminSyle';
 
 class ChangeProduct extends Component {
   constructor(props) {
@@ -33,27 +33,27 @@ class ChangeProduct extends Component {
             <ItemParam>Product name :</ItemParam>
             <CurrentValue>{product.title}</CurrentValue>
             <Fieldset>
-              <legend>Change product title</legend>
+              <Legend>Change product title</Legend>
               <InputText type="text" name="title" placeholder="New title" />
-              <InputSubmit type="submit" />
+              <InputSubmitChange type="submit" />
             </Fieldset>
           </ItemField>
           <ItemField>
             <ItemParam>Product description :</ItemParam>
             <CurrentValue>{product.description}</CurrentValue>
             <Fieldset>
-              <legend>Change product description</legend>
+              <Legend>Change product description</Legend>
               <TextareaField name="description" placeholder="New description"></TextareaField>
-              <InputSubmit type="submit" />
+              <InputSubmitChange type="submit" />
             </Fieldset>
           </ItemField>
           <ItemField>
             <ItemParam>Product price :</ItemParam>
             <CurrentValue>{product.price}</CurrentValue>
             <Fieldset>
-              <legend>Change product price</legend>
+              <Legend>Change product price</Legend>
               <InputText type="number" name="price" placeholder="New price" />
-              <InputSubmit type="submit" />
+              <InputSubmitChange type="submit" />
             </Fieldset>
           </ItemField>
           <ItemField>

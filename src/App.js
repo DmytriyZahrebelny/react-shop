@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
-import styled from 'styled-components';
+import { Route } from 'react-router-dom';
+import { AppBox, Header, HeaderLink, HeaderNav } from './style/adminSyle';
 import AdminPage from './views/AdminPage';
-
-const List = styled.ul`
-  list-style: none;
-`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-         <List>
-           <li>
-             <Link to="/admin">Admin</Link>
-           </li>
-         </List>
-         <Route path="/admin" component={AdminPage} />
-      </div>
+      <AppBox className="App">
+        <Header>
+           <HeaderNav>
+             <li>
+               <HeaderLink to="/admin">Admin</HeaderLink>
+             </li>
+           </HeaderNav>
+         </Header>
+         <main>
+           <Route path="/admin" component={AdminPage} />
+         </main>
+      </AppBox>
     );
   }
 }
