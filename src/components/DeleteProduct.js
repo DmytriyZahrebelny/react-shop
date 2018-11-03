@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListProduct, LinkProduct, ItemProduct, DeleteElement } from '../style/adminSyle';
+import { ListProduct, LinkProduct, ItemProduct, DeleteElement } from '../style/adminStyle';
 
 class DeleteProducts extends Component {
   constructor(props) {

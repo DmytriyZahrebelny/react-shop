@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListField, ItemField, CurrentValue, ItemParam, TextareaField, Fieldset, InputText, Legend, InputSubmitChange } from '../style/adminSyle';
+import { ListField, ItemField, CurrentValue, ItemParam, TextareaField, Fieldset, InputText, Legend, InputSubmitChange } from '../style/adminStyle';
 
 class ChangeProduct extends Component {
   constructor(props) {
@@ -57,7 +57,7 @@ class ChangeProduct extends Component {
             </Fieldset>
           </ItemField>
           <ItemField>
-            <img src={product.image} />
+            <img src={product.image}  alt={product.image}/>
           </ItemField>
         </ListField>
       </form>

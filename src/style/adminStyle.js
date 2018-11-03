@@ -14,10 +14,11 @@ export const Header = styled.header`
 `;
 
 export const HeaderNav = styled.ul`
+  display: flex;
+  justify-content: space-between;
   padding: 0;
   list-style: none;
 `;
-
 
 export const HeaderLink = styled(Link)`
   display: block;

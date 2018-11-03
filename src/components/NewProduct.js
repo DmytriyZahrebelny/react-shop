@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormContainer, ItemField, DescriptionsField, Fieldset, InputText, InputSubmitAdd, Legend } from '../style/adminSyle';
+import { FormContainer, ItemField, DescriptionsField, Fieldset, InputText, InputSubmitAdd, Legend } from '../style/adminStyle';
 
 class NewProduct extends Component {
   constructor(props) {

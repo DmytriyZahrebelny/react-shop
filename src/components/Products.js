@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { ListProduct, ItemProduct, LinkProduct } from '../style/adminSyle';
+import { ListProduct, ItemProduct, LinkProduct } from '../style/adminStyle';
 import Change from './ChangeProduct';
 
 const Products = ({ products, createNewData }) => {
@@ -8,7 +8,7 @@ const Products = ({ products, createNewData }) => {
     return (
       <ItemProduct key={product.id}>
         <LinkProduct to={`/admin/change/${product.id}`}>{product.title}</LinkProduct>
-        <Route path={`/admin/change/${product.id}`} 
+        <Route path={`/admin/change/${product.id}`}
           render={
             () => <Change createNewData={createNewData} product={product} />
           }
