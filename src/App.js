@@ -5,18 +5,27 @@ import { dataProducts } from './data/dataProducts';
 import AdminPage from './views/AdminPage';
 import ShopPage from './views/ShopPage';
 import MainNav from './components/MainNav';
+import * as Api from './api/Api';
 
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      products: dataProducts,
+      products: [],
     }
 
     this.changeData = this.changeData.bind(this);
     this.createProduct = this.createProduct.bind(this);
     this.deleteProduct = this.deleteProduct.bind(this);
+  }
+
+  async componentDidMount() {
+    const products = await Api.AdminProducts.fetchProducts();
+
+    this.setState({
+      products,
+    });
   }
 
   changeData(productId, nameField, newParam) {

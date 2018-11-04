@@ -9,17 +9,18 @@ class ChangeProduct extends Component {
   }
 
   onChangeTitle(evt) {
-    const { product, createNewData } = this.props;
+    const { product, changeData } = this.props;
+    console.log(changeData)
     evt.preventDefault();
 
     if (evt.target.title.value) {
-      createNewData(product.id, evt.target.title.name, evt.target.title.value);
+      changeData(product.id, evt.target.title.name, evt.target.title.value);
       evt.target.title.value = '';
     } else if (evt.target.description.value) {
-      createNewData(product.id, evt.target.description.name, evt.target.description.value);
+      changeData(product.id, evt.target.description.name, evt.target.description.value);
       evt.target.description.value = '';
     } else if (evt.target.price.value) {
-      createNewData(product.id, evt.target.price.name, evt.target.price.value);
+      changeData(product.id, evt.target.price.name, evt.target.price.value);
       evt.target.price.value = '';
     }
   };

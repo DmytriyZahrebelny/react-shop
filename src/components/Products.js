@@ -3,14 +3,14 @@ import { Route } from 'react-router-dom';
 import { ListProduct, ItemProduct, LinkProduct } from '../style/adminStyle';
 import Change from './ChangeProduct';
 
-const Products = ({ products, createNewData }) => {
+const Products = ({ products, changeData }) => {
   const product = products.map((product) => {
     return (
       <ItemProduct key={product.id}>
         <LinkProduct to={`/admin/change/${product.id}`}>{product.title}</LinkProduct>
         <Route path={`/admin/change/${product.id}`}
           render={
-            () => <Change createNewData={createNewData} product={product} />
+            () => <Change changeData={changeData} product={product} />
           }
         />
       </ItemProduct>
