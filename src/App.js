@@ -1,31 +1,23 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { AppBox } from './style/adminStyle';
-import { dataProducts } from './data/dataProducts';
 import AdminPage from './views/AdminPage';
 import ShopPage from './views/ShopPage';
 import MainNav from './components/MainNav';
-import * as Api from './api/Api';
+import * as productsOperations from './modules/Products/productsOperations';
 
 class App extends Component {
   constructor(props) {
-    super(props)
-
-    this.state = {
-      products: [],
-    }
+    super(props);
 
     this.changeData = this.changeData.bind(this);
     this.createProduct = this.createProduct.bind(this);
     this.deleteProduct = this.deleteProduct.bind(this);
   }
 
-  async componentDidMount() {
-    const products = await Api.AdminProducts.fetchProducts();
-
-    this.setState({
-      products,
-    });
+  componentDidMount() {
+    this.props.fetchProducts();
   }
 
   changeData(productId, nameField, newParam) {
@@ -52,6 +44,12 @@ class App extends Component {
   }
 
   render() {
+    const { products } = this.props;
+
+    if (products.length === 0) {
+      return <h1>Loadding...</h1>
+    }
+
     return (
       <AppBox className="App">
         <Switch>
@@ -62,14 +60,14 @@ class App extends Component {
                 changeData={this.changeData}
                 createProduct={this.createProduct}
                 deleteProduct={this.deleteProduct}
-                products={this.state.products}
+                products={products}
               />
             }
           />
           <Route path="/shop"
             render={
               (match) => <ShopPage
-                products={this.state.products} match={match}
+                products={products} match={match}
               />
             }
           />
@@ -79,4 +77,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => state.productsReduser;
+
+const mapStateToDispatch = {
+  fetchProducts: productsOperations.fetchProducts,
+};
+
+export default withRouter(connect(mapStateToProps, mapStateToDispatch)(App));
