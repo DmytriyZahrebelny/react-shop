@@ -27,7 +27,7 @@ export const ShopLink = styled(Link)`
 
 export const ProductLink = styled(Link)`
   display: block;
-  padding: 20px;
+  padding: 20px 20px 0;
   text-decoration: none;
 `;
 
@@ -56,6 +56,29 @@ export const ProductPrice = styled.p`
   font-size: 20px;
   text-align: center;
   color: #FF8F33;
+
+  :hover {
+    background-color: #ffffff;
+    color: red;
+  }
+`;
+
+export const ProductButtonContiner = styled.p`
+  display: block;
+  width: 200px;
+  padding: 10px;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  color: #FF8F33;
+  border: 2px solid #FB4128;
+  border-radius: 24px;
+
+  :hover {
+    background-color: #ffffff;
+    color: red;
+  }
 `;
 
 // ProductPage

@@ -1,24 +1,42 @@
-import React from 'react';
-import { MobilePlace, ProductLink, ProductName, ProductPrice } from '../style/shopStyle'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { MobilePlace, ProductLink, ProductName, ProductButtonContiner } from '../style/shopStyle'
+import * as actions from '../modules/Cart/cartActions';
 
-const mobileShop = ({ products, match : { match } }) => {
-  const productsCard = products.map((product) => {
+class MobileShop extends Component {
+  constructor(props) {
+    super(props)
+
+    this.addProduct = this.addProduct.bind(this);
+  }
+
+  addProduct(evt) {
+    const { addProductId } = this.props;
+
+    addProductId(evt.target.id);
+  }
+
+  render() {
+    const { products, match : { match } } = this.props;
+
+    const productsCard = products.map((product) => {
+      return (
+        <li key={product.title}>
+          <ProductLink to={`${match.url}/${product.id}`} >
+            <img src={product.image} alt={product.id} />
+            <ProductName>{product.title}</ProductName>
+          </ProductLink>
+          <ProductButtonContiner onClick={this.addProduct} id={product.id}>Add to Cart</ProductButtonContiner>
+        </li>
+      )
+    })
+
     return (
-      <li key={product.title}>
-        <ProductLink to={`${match.url}/${product.id}`} >
-          <img src={product.image} alt={product.id} />
-          <ProductName>{product.title}</ProductName>
-          <ProductPrice>{product.price + '$'}</ProductPrice>
-        </ProductLink>
-      </li>
-    )
-  })
-
-  return (
-    <MobilePlace>
-      {productsCard}
-    </MobilePlace>
-  );
+      <MobilePlace>
+        {productsCard}
+      </MobilePlace>
+    );
+  }
 }
 
-export default mobileShop;
+export default connect(null, {addProductId: actions.addProduct})(MobileShop);

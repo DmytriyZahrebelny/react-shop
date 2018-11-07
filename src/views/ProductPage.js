@@ -2,7 +2,7 @@ import React from 'react';
 import { ProductInfo, ProductTitle, ProductDescription, ProductButton, ProductPrice } from '../style/shopStyle';
 
 const productPage = ({ products, match }) => {
-  const idProduct = Number(match.location.pathname.slice(match.location.pathname.lastIndexOf('/') + 1));
+  const idProduct = match.location.pathname.slice(match.location.pathname.lastIndexOf('/') + 1);
 
   const currentProduct = products.filter((p) => {
     return p.id === idProduct;
@@ -23,7 +23,7 @@ const productPage = ({ products, match }) => {
         <ProductDescription>
           {currentProduct[0].description}
         </ProductDescription>
-        <ProductButton to='#'>Buy</ProductButton>
+        <ProductButton to='#'>Add to Cart</ProductButton>
       </div>
     </ProductInfo>
   );

@@ -10,37 +10,10 @@ import * as productsOperations from './modules/Products/productsOperations';
 class App extends Component {
   constructor(props) {
     super(props);
-
-    this.changeData = this.changeData.bind(this);
-    this.createProduct = this.createProduct.bind(this);
-    this.deleteProduct = this.deleteProduct.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchProducts();
-  }
-
-  changeData(productId, nameField, newParam) {
-    this.setState({
-      products: this.state.products.map((product) => {
-        if (product.id === productId) {
-          product[nameField] = newParam;
-        }
-        return product;
-      })
-    });
-  }
-
-  createProduct(product) {
-    this.setState({
-      products: [...this.state.products, product]
-    });
-  }
-
-  deleteProduct(newState) {
-    this.setState({
-      products: [...newState],
-    });
   }
 
   render() {
@@ -57,9 +30,6 @@ class App extends Component {
           <Route path="/admin"
             render={
               () => <AdminPage
-                changeData={this.changeData}
-                createProduct={this.createProduct}
-                deleteProduct={this.deleteProduct}
                 products={products}
               />
             }
@@ -77,10 +47,34 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => state.productsReduser;
+const mapStateToProps = state => state.productsReducer;
 
 const mapStateToDispatch = {
   fetchProducts: productsOperations.fetchProducts,
 };
 
 export default withRouter(connect(mapStateToProps, mapStateToDispatch)(App));
+
+
+// changeData(productId, nameField, newParam) {
+//   this.setState({
+//     products: this.state.products.map((product) => {
+//       if (product.id === productId) {
+//         product[nameField] = newParam;
+//       }
+//       return product;
+//     })
+//   });
+// }
+
+// createProduct(product) {
+//   this.setState({
+//     products: [...this.state.products, product]
+//   });
+// }
+
+// deleteProduct(newState) {
+//   this.setState({
+//     products: [...newState],
+//   });
+// }

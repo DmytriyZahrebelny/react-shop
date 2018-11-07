@@ -10,7 +10,6 @@ class ChangeProduct extends Component {
 
   onChangeTitle(evt) {
     const { product, changeData } = this.props;
-    console.log(changeData)
     evt.preventDefault();
 
     if (evt.target.title.value) {

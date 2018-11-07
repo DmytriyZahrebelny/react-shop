@@ -4,8 +4,8 @@ import { ShopContainer } from '../style/shopStyle';
 import { Header, HeaderLink, HeaderNav } from '../style/adminStyle';
 import ShopMenu from '../components/ShopMenu';
 import MobileShop from '../components/MobileShop';
-import ProductPage from '../components/ProductPage';
-import BasketPage from '../components/BasketPage';
+import ProductPage from './ProductPage';
+import CartPage from './CartPage';
 
 const shopPage = ({ products, match : {match} }) => {
   return (
@@ -16,7 +16,7 @@ const shopPage = ({ products, match : {match} }) => {
             <HeaderLink to="/shop">Shop</HeaderLink>
           </li>
           <li>
-            <HeaderLink to={`${match.path}/basket`}>Basket</HeaderLink>
+            <HeaderLink to={`${match.path}/basket`}>Cart</HeaderLink>
           </li>
         </HeaderNav>
       </Header>
@@ -29,7 +29,12 @@ const shopPage = ({ products, match : {match} }) => {
                 (match) => <MobileShop products={products} match={match} />
               }
             />
-            <Route path={`${match.path}/basket`} component={BasketPage}/>
+            <Route path={`${match.path}/basket`} 
+              render={
+                () => <CartPage products={products}  />
+              }
+            />
+
             <Route path={`${match.path}/:id`}
               render={
                 (match) => <ProductPage products={products} match={match} />
