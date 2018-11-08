@@ -11,7 +11,7 @@ class BasketPage extends Component {
   }
 
   render() {
-    const { products, addedProductId, addState } = this.props;
+    const { products, addedProductId } = this.props;
     const addedProducts = addedProductId ? addedProductId : [];
   
     const listAddedProducts = addedProducts.map(id => {

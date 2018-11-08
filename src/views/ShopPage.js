@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { ShopContainer } from '../style/shopStyle';
 import { Header, HeaderLink, HeaderNav } from '../style/adminStyle';
@@ -7,7 +8,7 @@ import MobileShop from '../components/MobileShop';
 import ProductPage from './ProductPage';
 import CartPage from './CartPage';
 
-const shopPage = ({ products, match : {match} }) => {
+const shopPage = ({ products, match : {match}, addedProductId }) => {
   return (
     <div>
       <Header>
@@ -16,7 +17,7 @@ const shopPage = ({ products, match : {match} }) => {
             <HeaderLink to="/shop">Shop</HeaderLink>
           </li>
           <li>
-            <HeaderLink to={`${match.path}/basket`}>Cart</HeaderLink>
+            <HeaderLink to={`${match.path}/basket`}>Cart({addedProductId.length})</HeaderLink>
           </li>
         </HeaderNav>
       </Header>
@@ -47,4 +48,6 @@ const shopPage = ({ products, match : {match} }) => {
   );
 }
 
-export default shopPage;
+const mapStateToProps = state => state.cartReducer;
+
+export default connect(mapStateToProps)(shopPage);

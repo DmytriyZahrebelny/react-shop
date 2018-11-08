@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { ListProduct, LinkProduct, ItemProduct, DeleteElement } from '../style/adminStyle';
+import * as actions from '../modules/Admin/adminActions';
 
 class DeleteProducts extends Component {
   constructor(props) {
@@ -11,12 +13,11 @@ class DeleteProducts extends Component {
   deleteElement(evt) {
     const { products, deleteProduct } = this.props;
 
-    products.splice(evt.target.id - 1, 1);
-    products.forEach((element, i) => {
-      return element.id = i + 1;
-    });
+    const newState = products.filter(product => {
+      return product.id !== evt.target.id;
+    })
 
-    deleteProduct(products);
+    deleteProduct(newState);
   }
 
   render() {
@@ -40,4 +41,6 @@ class DeleteProducts extends Component {
   }
 }
 
-export default DeleteProducts;
+const mapStateToProps = state => state.productsReducer;
+
+export default connect(mapStateToProps, { deleteProduct: actions.deleteProduct })(DeleteProducts);

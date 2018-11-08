@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { MobilePlace, ProductLink, ProductName, ProductButtonContiner } from '../style/shopStyle'
+import { MobilePlace, ProductLink, ProductName, ProductButtonContiner, ProductImg } from '../style/shopStyle'
 import * as actions from '../modules/Cart/cartActions';
 
 class MobileShop extends Component {
@@ -23,7 +23,7 @@ class MobileShop extends Component {
       return (
         <li key={product.title}>
           <ProductLink to={`${match.url}/${product.id}`} >
-            <img src={product.image} alt={product.id} />
+            <ProductImg src={product.image} alt={product.id} />
             <ProductName>{product.title}</ProductName>
           </ProductLink>
           <ProductButtonContiner onClick={this.addProduct} id={product.id}>Add to Cart</ProductButtonContiner>

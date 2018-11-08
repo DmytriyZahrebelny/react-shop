@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { FormContainer, ItemField, DescriptionsField, Fieldset, InputText, InputSubmitAdd, Legend } from '../style/adminStyle';
+import * as actions from '../modules/Admin/adminActions';
 
 class NewProduct extends Component {
   constructor(props) {
@@ -10,10 +12,10 @@ class NewProduct extends Component {
 
   addNewProduct(evt) {
     evt.preventDefault();
-    const { createProduct, products } = this.props;
+    const { createProduct } = this.props;
 
     createProduct({
-      id: products.length + 1,
+      id: '/' + new Date().getTime(),
       title: evt.target.title.value,
       description: evt.target.description.value,
       image: evt.target.url.value,
@@ -58,4 +60,4 @@ class NewProduct extends Component {
   };
 }
 
-export default NewProduct;
+export default connect(null, { createProduct: actions.addProduct })(NewProduct);

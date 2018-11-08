@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { AdminLinks, AdminMenu, AdminContaine, Header, HeaderLink, HeaderNav } from '../style/adminStyle';
-import Products from '../components/Products';
+import ChangeProduct from '../components/ChangeProduct';
 import NewProduct from '../components/NewProduct';
 import DeleteProduct from '../components/DeleteProduct';
 
@@ -25,21 +25,9 @@ const AdminPage = ({ changeData, createProduct, deleteProduct, products }) => {
         <AdminLinks to="/admin/delete">Delete product</AdminLinks>
       </AdminMenu>
       <div>
-        <Route path="/admin/change"
-          render={
-            () => <Products changeData={changeData} products={products} />
-          }
-        />
-        <Route path="/admin/add"
-          render={
-            () => <NewProduct createProduct={createProduct} products={products} />
-          }
-        />
-        <Route path="/admin/delete"
-          render={
-            () => <DeleteProduct deleteProduct={deleteProduct} products={products} />
-          }
-        />
+        <Route path="/admin/change" component={ChangeProduct} />
+        <Route path="/admin/add" component={NewProduct} />
+        <Route path="/admin/delete" component={DeleteProduct}/>
       </div>
     </AdminContaine>
     </div>

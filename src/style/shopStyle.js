@@ -27,8 +27,13 @@ export const ShopLink = styled(Link)`
 
 export const ProductLink = styled(Link)`
   display: block;
+  width: 265px;
   padding: 20px 20px 0;
   text-decoration: none;
+`;
+
+export const ProductImg = styled.img`
+  width: 265px;
 `;
 
 export const MobilePlace = styled.ul`
@@ -74,6 +79,7 @@ export const ProductButtonContiner = styled.p`
   color: #FF8F33;
   border: 2px solid #FB4128;
   border-radius: 24px;
+  cursor: pointer;
 
   :hover {
     background-color: #ffffff;

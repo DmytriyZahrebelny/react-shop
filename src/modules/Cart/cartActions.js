@@ -1,4 +1,4 @@
-import * as constants from './cartConstats';
+import * as constants from './cartConstants';
 
 export const addState = payload => ({
   type: constants.ADD_STATE,

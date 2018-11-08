@@ -8,16 +8,16 @@ import MainNav from './components/MainNav';
 import * as productsOperations from './modules/Products/productsOperations';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.fetchProducts();
   }
 
   render() {
     const { products } = this.props;
+
+    if (!products) {
+      return <h1>Loadding...</h1>
+    }
 
     if (products.length === 0) {
       return <h1>Loadding...</h1>
@@ -54,27 +54,3 @@ const mapStateToDispatch = {
 };
 
 export default withRouter(connect(mapStateToProps, mapStateToDispatch)(App));
-
-
-// changeData(productId, nameField, newParam) {
-//   this.setState({
-//     products: this.state.products.map((product) => {
-//       if (product.id === productId) {
-//         product[nameField] = newParam;
-//       }
-//       return product;
-//     })
-//   });
-// }
-
-// createProduct(product) {
-//   this.setState({
-//     products: [...this.state.products, product]
-//   });
-// }
-
-// deleteProduct(newState) {
-//   this.setState({
-//     products: [...newState],
-//   });
-// }

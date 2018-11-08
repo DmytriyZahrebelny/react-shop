@@ -1,68 +1,33 @@
-import React, { Component } from 'react';
-import { ListField, ItemField, CurrentValue, ItemParam, TextareaField, Fieldset, InputText, Legend, InputSubmitChange } from '../style/adminStyle';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
+import { ListProduct, ItemProduct, LinkProduct } from '../style/adminStyle';
+import ChangeProductForm from './ChangeProductForm';
+import * as actions from '../modules/Admin/adminActions';
 
-class ChangeProduct extends Component {
-  constructor(props) {
-    super(props);
-
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-  }
-
-  onChangeTitle(evt) {
-    const { product, changeData } = this.props;
-    evt.preventDefault();
-
-    if (evt.target.title.value) {
-      changeData(product.id, evt.target.title.name, evt.target.title.value);
-      evt.target.title.value = '';
-    } else if (evt.target.description.value) {
-      changeData(product.id, evt.target.description.name, evt.target.description.value);
-      evt.target.description.value = '';
-    } else if (evt.target.price.value) {
-      changeData(product.id, evt.target.price.name, evt.target.price.value);
-      evt.target.price.value = '';
-    }
-  };
-
-  render() {
-    const { product } = this.props;
+const ChangeProduct = ({ products }) => {
+  const product = products.map((product) => {
     return (
-      <form onSubmit={this.onChangeTitle} action="">
-        <ListField>
-          <ItemField>
-            <ItemParam>Product name :</ItemParam>
-            <CurrentValue>{product.title}</CurrentValue>
-            <Fieldset>
-              <Legend>Change product title</Legend>
-              <InputText type="text" name="title" placeholder="New title" />
-              <InputSubmitChange type="submit" />
-            </Fieldset>
-          </ItemField>
-          <ItemField>
-            <ItemParam>Product description :</ItemParam>
-            <CurrentValue>{product.description}</CurrentValue>
-            <Fieldset>
-              <Legend>Change product description</Legend>
-              <TextareaField name="description" placeholder="New description"></TextareaField>
-              <InputSubmitChange type="submit" />
-            </Fieldset>
-          </ItemField>
-          <ItemField>
-            <ItemParam>Product price :</ItemParam>
-            <CurrentValue>{product.price}</CurrentValue>
-            <Fieldset>
-              <Legend>Change product price</Legend>
-              <InputText type="number" name="price" placeholder="New price" />
-              <InputSubmitChange type="submit" />
-            </Fieldset>
-          </ItemField>
-          <ItemField>
-            <img src={product.image}  alt={product.image}/>
-          </ItemField>
-        </ListField>
-      </form>
+      <ItemProduct key={product.id}>
+        <LinkProduct to={`/admin/change/${product.id}`}>{product.title}</LinkProduct>
+        <Route path={`/admin/change/${product.id}`}
+          render={
+            () => <ChangeProductForm product={product} />
+          }
+        />
+      </ItemProduct>
     );
-  }
+  })
+
+  return (
+    <div>
+      <ListProduct>
+        {product}
+      </ListProduct>
+    </div>
+  )
 }
 
-export default ChangeProduct;
+const mapStateToProps = state => state.productsReducer;
+
+export default connect(mapStateToProps, { changeData: actions.changeProduct })(ChangeProduct);
