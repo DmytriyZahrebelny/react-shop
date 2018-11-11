@@ -1,7 +1,7 @@
 import React from 'react';
-import { Header, HeaderLink, HeaderNav } from '../style/adminStyle';
+import { Header, HeaderLink, HeaderNav } from '../style/AdminStyle/AdminHeaderStyle';
 
-const MainNav = () => {
+const AdminHeader = () => {
   return (
     <Header>
       <HeaderNav>
@@ -16,6 +16,4 @@ const MainNav = () => {
   )
 }
 
-
-
-export default MainNav;
+export default AdminHeader;

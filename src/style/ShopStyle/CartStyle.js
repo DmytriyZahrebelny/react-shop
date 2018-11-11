@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ProductItem = styled.li`
+export const Product = styled.li`
   display: flex;
   justify-content: space-between;
   width: 800px;

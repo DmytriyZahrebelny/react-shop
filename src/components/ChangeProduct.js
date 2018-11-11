@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { ListProduct, ItemProduct, LinkProduct } from '../style/adminStyle';
+import { ListProducts, ItemProduct, LinkProduct } from '../style/AdminStyle/ChangeProductStyle';
 import ChangeProductForm from './ChangeProductForm';
 import * as actions from '../modules/Admin/adminActions';
 
@@ -21,9 +21,9 @@ const ChangeProduct = ({ products }) => {
 
   return (
     <div>
-      <ListProduct>
+      <ListProducts>
         {product}
-      </ListProduct>
+      </ListProducts>
     </div>
   )
 }

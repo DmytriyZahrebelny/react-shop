@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { MobilePlace, ProductLink, ProductName, ProductButtonContiner, ProductImg } from '../style/shopStyle'
+import { ProductsList, ProductLink, ProductName, Button, ProductImg } from '../style/ShopStyle/MobileProductsStyle'
 import * as actions from '../modules/Cart/cartActions';
 
-class MobileShop extends Component {
+class MobileProducts extends Component {
   constructor(props) {
     super(props)
 
@@ -17,7 +17,7 @@ class MobileShop extends Component {
   }
 
   render() {
-    const { products, match : { match } } = this.props;
+    const { products, match } = this.props;
 
     const productsCard = products.map((product) => {
       return (
@@ -26,17 +26,19 @@ class MobileShop extends Component {
             <ProductImg src={product.image} alt={product.id} />
             <ProductName>{product.title}</ProductName>
           </ProductLink>
-          <ProductButtonContiner onClick={this.addProduct} id={product.id}>Add to Cart</ProductButtonContiner>
+          <Button onClick={this.addProduct} id={product.id}>Add to Cart</Button>
         </li>
       )
     })
 
     return (
-      <MobilePlace>
+      <ProductsList>
         {productsCard}
-      </MobilePlace>
+      </ProductsList>
     );
   }
 }
 
-export default connect(null, {addProductId: actions.addProduct})(MobileShop);
+const mapStateToProps = state => state.productsReducer;
+
+export default connect(mapStateToProps, {addProductId: actions.addProduct})(MobileProducts);

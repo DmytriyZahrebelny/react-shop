@@ -4,14 +4,11 @@ import { Route, Switch } from 'react-router-dom';
 import { ShopContainer } from '../style/ShopStyle/ShopPageStyle';
 import ShopMenu from '../components/ShopMenu';
 import MobileProducts from '../components/MobileProducts';
-import TabletProducts from '../components/TabletProducts';
-import DesktopProducts from '../components/DesktopProducts';
 import InfoProduct from '../components/InfoProduct';
-import Cart from '../components/Cart';
+import CartPage from './Cart';
 import ShopHeader from '../components/ShopHeader';
 
-const ShopPage = ({ addedProductId, match }) => {
-
+const ShopPage = ({ products, match : {match}, addedProductId }) => {
   return (
     <div>
       <ShopHeader match={match} addedProductId={addedProductId} />
@@ -19,11 +16,21 @@ const ShopPage = ({ addedProductId, match }) => {
         <ShopMenu match={match} />
         <div>
           <Switch>
-            <Route exact path={`${match.path}/mobile`} component={MobileProducts} />
-            <Route exact path={`${match.path}/tablet`} component={TabletProducts} />
-            <Route exact path={`${match.path}/desktop`} component={DesktopProducts} />
-            <Route path={`${match.path}/cart`} component={Cart} />
-            <Route path={`${match.path}/:id`} component={InfoProduct} />
+            <Route exact path={`${match.path}/mobile`}
+              render={
+                (match) => <MobileProducts products={products} match={match} />
+              }
+            />
+            <Route path={`${match.path}/basket`}
+              render={
+                () => <CartPage products={products} />
+              }
+            />
+            <Route path={`${match.path}/:id`}
+              render={
+                (match) => <InfoProduct products={products} match={match} />
+              }
+            />
           </Switch>
         </div>
       </ShopContainer>

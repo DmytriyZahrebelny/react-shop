@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListProduct, LinkProduct, ItemProduct, DeleteElement } from '../style/adminStyle';
+import { ListProduct, LinkProduct, Product, DeleteElement } from '../style/AdminStyle/DeleteProductsStyle';
 import * as actions from '../modules/Admin/adminActions';
 
 class DeleteProducts extends Component {
@@ -24,19 +24,17 @@ class DeleteProducts extends Component {
     const { products } = this.props;
     const product = products.map((product) => {
       return (
-        <ItemProduct key={product.id}>
+        <Product key={product.id}>
           <LinkProduct to="#">{product.title}</LinkProduct>
           <DeleteElement onClick={this.deleteElement} id={product.id}>X</DeleteElement>
-        </ItemProduct>
+        </Product>
       );
     })
 
     return (
-      <div>
-        <ListProduct>
-          {product}
-        </ListProduct>
-    </div>
+      <ListProduct>
+        {product}
+      </ListProduct>
     )
   }
 }

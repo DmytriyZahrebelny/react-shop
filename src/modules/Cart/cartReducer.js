@@ -14,7 +14,7 @@ export default function reducer(state = initialState, action) {
       })
     case constants.ADD_PRODUCT:
       return Object.assign({}, state, {
-        allProducts: [...state.allProducts],
+        allProducts: state.allProducts,
         addedProductId: [...state.addedProductId, action.payload],
       });
 

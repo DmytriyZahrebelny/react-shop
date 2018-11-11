@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListField, ItemField, CurrentValue, ItemParam, TextareaField, Fieldset, InputText, Legend, InputSubmitChange } from '../style/adminStyle';
+import { FieldsContainer, CurrentValue, ItemParam, TextareaField, Fieldset, TextField, Legend, Input } from '../style/AdminStyle/ChangeProductFormStyle';
 import * as actions from '../modules/Admin/adminActions';
 
 function changeProductData(products, productId, nameField, newParam) {
@@ -41,40 +41,35 @@ class ChangeProductForm extends Component {
   render() {
     const { product } = this.props;
     return (
-      <form onSubmit={this.onChangeTitle} action="">
-        <ListField>
-          <ItemField>
-            <ItemParam>Product name :</ItemParam>
-            <CurrentValue>{product.title}</CurrentValue>
-            <Fieldset>
-              <Legend>Change product title</Legend>
-              <InputText type="text" name="title" placeholder="New title" />
-              <InputSubmitChange type="submit" />
-            </Fieldset>
-          </ItemField>
-          <ItemField>
-            <ItemParam>Product description :</ItemParam>
-            <CurrentValue>{product.description}</CurrentValue>
-            <Fieldset>
-              <Legend>Change product description</Legend>
-              <TextareaField name="description" placeholder="New description"></TextareaField>
-              <InputSubmitChange type="submit" />
-            </Fieldset>
-          </ItemField>
-          <ItemField>
-            <ItemParam>Product price :</ItemParam>
-            <CurrentValue>{product.price}</CurrentValue>
-            <Fieldset>
-              <Legend>Change product price</Legend>
-              <InputText type="number" name="price" placeholder="New price" />
-              <InputSubmitChange type="submit" />
-            </Fieldset>
-          </ItemField>
-          <ItemField>
-            <img src={product.image}  alt={product.image}/>
-          </ItemField>
-        </ListField>
-      </form>
+      <FieldsContainer>
+        <form onSubmit={this.onChangeTitle} action="">
+
+          <ItemParam>Product name :</ItemParam>
+          <CurrentValue>{product.title}</CurrentValue>
+          <Fieldset>
+            <Legend>Change product title</Legend>
+            <TextField type="text" name="title" placeholder="New title" />
+            <Input type="submit" />
+          </Fieldset>
+
+          <ItemParam>Product description :</ItemParam>
+          <CurrentValue>{product.description}</CurrentValue>
+          <Fieldset>
+            <Legend>Change product description</Legend>
+            <TextareaField name="description" placeholder="New description"></TextareaField>
+            <Input type="submit" />
+          </Fieldset>
+
+          <ItemParam>Product price :</ItemParam>
+          <CurrentValue>{product.price}</CurrentValue>
+          <Fieldset>
+            <Legend>Change product price</Legend>
+            <TextField type="number" name="price" placeholder="New price" />
+            <Input type="submit" />
+          </Fieldset>
+
+        </form>
+      </FieldsContainer>
     );
   }
 }

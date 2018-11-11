@@ -1,20 +1,20 @@
 import React from 'react';
-import { ShopMenu, ShopLink } from '../style/shopStyle';
+import { ShopMenuContainer, ShopMenuLink } from '../style/ShopStyle/ShopMenuStyle';
 
-const shopMenu = ({ match }) => {
+const ShopMenu = ({ match }) => {
   return (
-    <ShopMenu>
+    <ShopMenuContainer>
       <li>
-        <ShopLink to={`${match.url}/mobile`}>Mobile</ShopLink>
+        <ShopMenuLink to={`${match.url}/mobile`}>Mobile</ShopMenuLink>
       </li>
       <li>
-        <ShopLink to={`${match.url}/tablet`}>Tablet</ShopLink>
+        <ShopMenuLink to={`${match.url}/tablet`}>Tablet</ShopMenuLink>
       </li>
       <li>
-        <ShopLink to={`${match.url}/desktop`}>Desktop</ShopLink>
+        <ShopMenuLink to={`${match.url}/desktop`}>Desktop</ShopMenuLink>
       </li>
-    </ShopMenu>
+    </ShopMenuContainer>
   )
 }
 
-export default shopMenu;
+export default ShopMenu;
