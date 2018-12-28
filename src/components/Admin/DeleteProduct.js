@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListProduct, LinkProduct, Product, DeleteElement } from '../style/AdminStyle/DeleteProductsStyle';
-import * as actions from '../modules/Admin/adminActions';
+import { ListProduct, LinkProduct, Product, DeleteElement } from '../../style/AdminStyle/DeleteProductsStyle';
+import * as actions from '../../modules/Admin/adminActions';
 
 class DeleteProducts extends Component {
   constructor(props) {

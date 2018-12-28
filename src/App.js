@@ -4,7 +4,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { AppContainer } from './style/AppStyle/AppStyle';
 import AdminPage from './views/AdminPage';
 import ShopPage from './views/ShopPage';
-import AdminHeader from './components/AdminHeader';
+import AdminHeader from './components/Admin/AdminHeader';
 import * as productsOperations from './modules/Products/productsOperations';
 
 class App extends Component {

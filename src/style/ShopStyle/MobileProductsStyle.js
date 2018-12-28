@@ -46,4 +46,5 @@ export const Button = styled.p`
 
 export const ProductImg = styled.img`
   width: 265px;
+  height: 265px;
 `;

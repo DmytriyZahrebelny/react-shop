@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { AdminContainer } from '../style/AdminStyle/AdminPageStyle';
-import ChangeProduct from '../components/ChangeProduct';
-import AddProduct from '../components/AddProduct';
-import DeleteProduct from '../components/DeleteProduct';
-import AdminMenu from '../components/AdminMenu';
-import AdminHeader from '../components/AdminHeader';
+import ChangeProduct from '../components/Admin/ChangeProduct';
+import AddProduct from '../components/Admin/AddProduct';
+import DeleteProduct from '../components/Admin/DeleteProduct';
+import AdminMenu from '../components/Admin/AdminMenu';
+import AdminHeader from '../components/Admin/AdminHeader';
 
 const AdminPage = () => {
   return (

@@ -23,6 +23,6 @@ const _request = ( url, body, params={} ) => {
 
 export const AdminProducts = {
   fetchProducts() {
-    return _request(`/api/v1/products`);
+    return _request(`/api/v2/products`);
   },
 };

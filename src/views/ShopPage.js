@@ -11,6 +11,7 @@ import Cart from '../components/Cart';
 import ShopHeader from '../components/ShopHeader';
 
 const ShopPage = ({ addedProductId, match }) => {
+  console.log(match.path)
 
   return (
     <div>
@@ -20,8 +21,8 @@ const ShopPage = ({ addedProductId, match }) => {
         <div>
           <Switch>
             <Route exact path={`${match.path}/mobile`} component={MobileProducts} />
-            <Route exact path={`${match.path}/tablet`} component={TabletProducts} />
-            <Route exact path={`${match.path}/desktop`} component={DesktopProducts} />
+            <Route path={`${match.path}/tablet`} component={TabletProducts} />
+            <Route path={`${match.path}/desktop`} component={DesktopProducts} />
             <Route path={`${match.path}/cart`} component={Cart} />
             <Route path={`${match.path}/:id`} component={InfoProduct} />
           </Switch>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FormContainer, DescriptionsField, Fieldset, FieldText, Input, Legend } from '../style/AdminStyle/AddProductStyle';
-import * as actions from '../modules/Admin/adminActions';
+import { FormContainer, DescriptionsField, Fieldset, FieldText, Input, Legend } from '../../style/AdminStyle/AddProductStyle';
+import * as actions from '../../modules/Admin/adminActions';
 
 class AddProduct extends Component {
   constructor(props) {

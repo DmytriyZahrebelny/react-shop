@@ -5,8 +5,8 @@ export const FieldsContainer = styled.div`
   content: "";
   width: 500px;
   height: 500px;
-  left: 390px;
-  top: 0;
+  left: 835px;
+  top: 125px;
   list-style: none;
 `;
 

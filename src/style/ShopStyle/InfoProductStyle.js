@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Product = styled.div`
   display: flex;
@@ -17,7 +16,7 @@ export const ProductDescription = styled.p`
   color: #FF8F33;
 `;
 
-export const Button = styled(Link)`
+export const Button = styled.a`
   display: block;
   width: 200px;
   padding: 10px 20px;
@@ -42,9 +41,11 @@ export const ProductPrice = styled.p`
   font-size: 20px;
   text-align: center;
   color: #FF8F33;
+`;
 
-  :hover {
-    background-color: #ffffff;
-    color: red;
-  }
+export const ProductImg = styled.img`
+  display: block;
+  width: 265px;
+  height: 265px;
+  margin-right: 20px;
 `;

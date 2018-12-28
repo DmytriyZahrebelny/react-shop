@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Product, ProductImg, ProductDescriptions, ProductPrice } from '../style/ShopStyle/CartStyle';
+import { Product, ProductImg, ProductDescriptions, ProductPrice, CartContainer, ListProducts, AllPrice, ToPayText, Button } from '../style/ShopStyle/CartStyle';
 import * as actions from '../modules/Cart/cartActions';
 
 class Cart extends Component {
@@ -17,26 +17,36 @@ class Cart extends Component {
       return <h1>Loadding...</h1>
     }
 
-    const listAddedProducts = addedProductId.map(id => {
+    const addedProducts = allProducts.filter(p => {
+      if (addedProductId.includes(p.id)) {
+        return p.id;
+      }
+    })
+    
+    const listAddedProducts = addedProducts.map(product => {
       return (
-        <Product key={getProduct(id)[0].id}>
-          <ProductImg src={getProduct(id)[0].image} alt={getProduct(id)[0].title} />
-          <ProductPrice>${getProduct(id)[0].price}</ProductPrice>
-          <ProductDescriptions>{getProduct(id)[0].title}</ProductDescriptions>
+        <Product key={product.id}>
+          <ProductImg src={product.image} alt={product.title} />
+          <ProductPrice>${product.price}</ProductPrice>
+          <ProductDescriptions>{product.title}</ProductDescriptions>
         </Product>
-      );
+      )
     });
 
-    function getProduct(id) {
-      return allProducts.filter((product, i) => {
-        return product.id === id;
-      })
-    }
+    const allPrice = addedProducts.reduce((sum, currentPrice) => {
+      return sum + currentPrice.price;
+    }, 0);
 
     return (
-      <ul>
-        {listAddedProducts}
-      </ul>
+      <CartContainer>
+        <ListProducts>
+          {listAddedProducts}
+        </ListProducts>
+        <AllPrice>
+          <ToPayText>To pay: ${allPrice}</ToPayText>
+          <Button type="submit" value="Buy" />
+        </AllPrice>
+      </CartContainer>
     )
   }
 }
