@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Product, ProductImg, ProductDescriptions, ProductPrice, CartContainer, ListProducts, AllPrice, ToPayText, Button } from '../style/ShopStyle/CartStyle';
-import * as actions from '../modules/Cart/cartActions';
+import { Product, ProductImg, ProductDescriptions, ProductPrice, CartContainer, ListProducts, AllPrice, ToPayText, Button } from '../../style/ShopStyle/CartStyle';
+import * as actions from '../../modules/Cart/cartActions';
 
 class Cart extends Component {
   componentDidMount() {

@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { ShopContainer } from '../style/ShopStyle/ShopPageStyle';
-import ShopMenu from '../components/ShopMenu';
-import MobileProducts from '../components/MobileProducts';
-import TabletProducts from '../components/TabletProducts';
-import DesktopProducts from '../components/DesktopProducts';
-import InfoProduct from '../components/InfoProduct';
-import Cart from '../components/Cart';
-import ShopHeader from '../components/ShopHeader';
+import ShopMenu from '../components/Shop/ShopMenu';
+import MobileProducts from '../components/Shop/MobileProducts';
+import TabletProducts from '../components/Shop/TabletProducts';
+import DesktopProducts from '../components/Shop/DesktopProducts';
+import InfoProduct from '../components/Shop/InfoProduct';
+import Cart from '../components/Shop/Cart';
+import ShopHeader from '../components/Shop/ShopHeader';
 
 const ShopPage = ({ addedProductId, match }) => {
   console.log(match.path)

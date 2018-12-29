@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import { ShopContainer } from '../style/ShopStyle/ShopPageStyle';
-import ShopMenu from '../components/ShopMenu';
+import { ShopContainer } from '../../style/ShopStyle/ShopPageStyle';
+import ShopMenu from '../ShopMenu';
 import MobileProducts from '../components/MobileProducts';
-import InfoProduct from '../components/InfoProduct';
+import InfoProduct from './InfoProduct';
 import CartPage from './Cart';
-import ShopHeader from '../components/ShopHeader';
+import ShopHeader from './ShopHeader';
 
 const ShopPage = ({ products, match : {match}, addedProductId }) => {
   return (

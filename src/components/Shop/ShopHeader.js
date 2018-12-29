@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, HeaderLink, HeaderNav } from '../style/AdminStyle/AdminHeaderStyle';
+import { Header, HeaderLink, HeaderNav } from '../../style/AdminStyle/AdminHeaderStyle';
 
 const ShopHeader = ({ match, addedProductId }) => {
   return (

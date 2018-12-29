@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ProductsList, ProductLink, ProductName, Button, ProductImg } from '../style/ShopStyle/MobileProductsStyle'
-import * as actions from '../modules/Cart/cartActions';
+import { ProductsList, ProductLink, ProductName, Button, ProductImg } from '../../style/ShopStyle/MobileProductsStyle'
+import * as actions from '../../modules/Cart/cartActions';
 
 class MobileProducts extends Component {
   constructor(props) {

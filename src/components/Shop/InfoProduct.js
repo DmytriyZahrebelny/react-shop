@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Product, ProductTitle, ProductDescription, Button, ProductPrice, ProductImg } from '../style/ShopStyle/InfoProductStyle';
-import * as actions from '../modules/Cart/cartActions';
+import { Product, ProductTitle, ProductDescription, Button, ProductPrice, ProductImg } from '../../style/ShopStyle/InfoProductStyle';
+import * as actions from '../../modules/Cart/cartActions';
 
 const InfoProduct = ({ products, location, addProductId }) => {
   const idProduct = location.pathname.slice(location.pathname.lastIndexOf('/') + 1);

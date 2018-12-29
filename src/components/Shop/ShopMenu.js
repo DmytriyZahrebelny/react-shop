@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShopMenuContainer, ShopMenuLink } from '../style/ShopStyle/ShopMenuStyle';
+import { ShopMenuContainer, ShopMenuLink } from '../../style/ShopStyle/ShopMenuStyle';
 
 const ShopMenu = ({ match }) => {
   return (
