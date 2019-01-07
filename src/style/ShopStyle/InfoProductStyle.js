@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const Product = styled.div`
   display: flex;
-  width: 750px;
-  justify-content: space-between;
-  padding: 20px 0;
+  width: 1200px;
+  padding: 20px 100px;
+  margin: 10px auto 0;
+  background-color: #ffffff;
 `;
 
 export const ProductTitle = styled.h1`
@@ -13,7 +14,7 @@ export const ProductTitle = styled.h1`
 
 export const ProductDescription = styled.p`
   width: 400px;
-  color: #FF8F33;
+  color: #FB4128;
 `;
 
 export const Button = styled.a`
@@ -29,7 +30,8 @@ export const Button = styled.a`
   border-radius: 24px;
 
   :hover {
-    background-color: #ffffff;
+    color: #ffffff;
+    background-color: #FF5122;
   }
 `;
 
@@ -40,12 +42,12 @@ export const ProductPrice = styled.p`
   padding: 10px;
   font-size: 20px;
   text-align: center;
-  color: #FF8F33;
+  color: #FB4128;
 `;
 
 export const ProductImg = styled.img`
   display: block;
-  width: 265px;
-  height: 265px;
+  width: 300px;
+  height: 300px;
   margin-right: 20px;
 `;

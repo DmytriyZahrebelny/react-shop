@@ -2,19 +2,29 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const ProductsList = styled.ul`
-display: flex;
-justify-content: space-between;
-flex-wrap: wrap;
-width: 960px;
-padding: 0;
-margin: 0;
-list-style: none;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 1200px;
+  padding: 0;
+  margin: 10px auto 0;
+  list-style: none;
+  background-color: #ffffff;
+`;
+
+export const ProductItem = styled.li`
+  margin: 20px 0;
+  padding-bottom: 20px;
+
+  :hover {
+    box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.75);
+  }
 `;
 
 export const ProductLink = styled(Link)`
   display: block;
   width: 265px;
-  padding: 20px 20px 0;
+  padding: 20px 0;
   text-decoration: none;
 `;
 

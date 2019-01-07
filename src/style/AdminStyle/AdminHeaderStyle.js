@@ -2,13 +2,15 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Header = styled.header`
-  border-bottom: 2px solid #FF8F33;
+  background-color: #FF5122;
 `;
 
 export const HeaderNav = styled.ul`
   display: flex;
   justify-content: space-between;
-  padding: 0;
+  width: 1200px;
+  padding: 15px 0;
+  margin: 0 auto;
   list-style: none;
 `;
 
@@ -16,5 +18,5 @@ export const HeaderLink = styled(Link)`
   display: block;
   padding: 20px;
   font-size: 18px;
-  color: #FF5122;
+  color: #fff;
 `;

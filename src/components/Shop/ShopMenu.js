@@ -1,17 +1,17 @@
 import React from 'react';
 import { ShopMenuContainer, ShopMenuLink } from '../../style/ShopStyle/ShopMenuStyle';
 
-const ShopMenu = ({ match }) => {
+const ShopMenu = () => {
   return (
     <ShopMenuContainer>
       <li>
-        <ShopMenuLink to={`${match.url}/mobile`}>Mobile</ShopMenuLink>
+        <ShopMenuLink to='/mobile'>Mobile</ShopMenuLink>
       </li>
       <li>
-        <ShopMenuLink to={`${match.url}/tablet`}>Tablet</ShopMenuLink>
+        <ShopMenuLink to='/tablet'>Tablet</ShopMenuLink>
       </li>
       <li>
-        <ShopMenuLink to={`${match.url}/desktop`}>Desktop</ShopMenuLink>
+        <ShopMenuLink to='/desktop'>Desktop</ShopMenuLink>
       </li>
     </ShopMenuContainer>
   )

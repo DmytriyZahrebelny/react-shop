@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { Product, ProductTitle, ProductDescription, Button, ProductPrice, ProductImg } from '../../style/ShopStyle/InfoProductStyle';
 import * as actions from '../../modules/Cart/cartActions';
 
-const InfoProduct = ({ products, location, addProductId }) => {
-  const idProduct = location.pathname.slice(location.pathname.lastIndexOf('/') + 1);
-
+const InfoProduct = ({ products, addProductId, match }) => {
   const currentProduct = products.filter((product) => {
-    return product.id === idProduct;
+    return product.id === match.params.id;
   });
+
+  const [ product ] = currentProduct;
 
   function addProduct(evt) {
     addProductId(evt.target.id);
@@ -17,19 +17,19 @@ const InfoProduct = ({ products, location, addProductId }) => {
   return (
     <Product>
       <div>
-        <ProductImg src={currentProduct[0].image} alt={currentProduct[0].id} />
+        <ProductImg src={product.image} alt={product.id} />
         <ProductPrice>
-          {`Price: ${currentProduct[0].price}$`}
+          {`Price: ${product.price}$`}
         </ProductPrice>
       </div>
       <div>
         <ProductTitle>
-          {currentProduct[0].title}
+          {product.title}
         </ProductTitle>
         <ProductDescription>
-          {currentProduct[0].description}
+          {product.description}
         </ProductDescription>
-        <Button id={currentProduct[0].id} onClick={addProduct} href='#'>Add to Cart</Button>
+        <Button id={product.id} onClick={addProduct} href='#'>Add to Cart</Button>
       </div>
     </Product>
   );

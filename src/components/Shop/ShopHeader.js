@@ -6,10 +6,11 @@ const ShopHeader = ({ match, addedProductId }) => {
     <Header>
       <HeaderNav>
         <li>
-          <HeaderLink to="/shop">Shop</HeaderLink>
+          <HeaderLink to="/">Shop</HeaderLink>
         </li>
         <li>
-          <HeaderLink to={`${match.path}/cart`}>Cart({addedProductId.length})</HeaderLink>
+          <HeaderLink to={`/cart`}>Cart</HeaderLink> 
+          {/* <HeaderLink to={`${match.path}/cart`}>Cart({addedProductId.length})</HeaderLink> */}
         </li>
       </HeaderNav>
     </Header>

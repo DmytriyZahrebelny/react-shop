@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ProductsList, ProductLink, ProductName, Button, ProductImg } from '../../style/ShopStyle/MobileProductsStyle'
+import { ProductsList, ProductItem, ProductLink, ProductName, Button, ProductImg } from '../../style/ShopStyle/MobileProductsStyle';
 import * as actions from '../../modules/Cart/cartActions';
 
 class MobileProducts extends Component {
@@ -21,13 +21,13 @@ class MobileProducts extends Component {
 
     const productsCard = products.map((product) => {
       return (
-        <li key={product.title}>
+        <ProductItem key={product.title}>
           <ProductLink to={`${match.url}/${product.id}`} >
             <ProductImg src={product.image} alt={product.id} />
             <ProductName>{product.title}</ProductName>
           </ProductLink>
           <Button onClick={this.addProduct} id={product.id}>Add to Cart</Button>
-        </li>
+        </ProductItem>
       )
     })
 
