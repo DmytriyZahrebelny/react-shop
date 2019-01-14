@@ -8,7 +8,7 @@ import TabletProducts from '../components/Shop/TabletProducts';
 import DesktopProducts from '../components/Shop/DesktopProducts';
 import MobilePage from '../components/Shop/MobilePage';
 
-class App extends Component {
+class ShopPage extends Component {
   componentDidMount() {
     this.props.fetchProducts();
   }
@@ -34,4 +34,4 @@ class App extends Component {
 
 const mapStateToProps = state => state.productsReducer;
 
-export default withRouter(connect(mapStateToProps, { fetchProducts: productsOperations.fetchProducts, })(App));
+export default withRouter(connect(mapStateToProps, { fetchProducts: productsOperations.fetchProducts, })(ShopPage));
