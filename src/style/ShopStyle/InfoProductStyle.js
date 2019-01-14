@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Product = styled.div`
   display: flex;
   width: 1200px;
-  padding: 20px 100px;
+  padding: 20px 0;
   margin: 10px auto 0;
   background-color: #ffffff;
 `;
@@ -49,5 +49,5 @@ export const ProductImg = styled.img`
   display: block;
   width: 300px;
   height: 300px;
-  margin-right: 20px;
+  margin: 20px 45px 0;
 `;

@@ -1,42 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import React from 'react';
 import { AppContainer } from './style/AppStyle/AppStyle';
-import * as productsOperations from './modules/Products/productsOperations';
-import AdminPage from './views/AdminPage';
-import ShopMenu from '../src/components/Shop/ShopMenu';
-import ShopHeader from '../src/components/Shop/ShopHeader';
-import TabletProducts from '../src/components/Shop/TabletProducts';
-import DesktopProducts from '../src/components/Shop/DesktopProducts';
-import MobilePage from './components/Shop/MobilePage';
+import Header from './components/Header/Header';
+import ShopPage from './views/ShopPage';
 
-class App extends Component {
-  componentDidMount() {
-    this.props.fetchProducts();
-  }
-
-  render() {
-    const { products } = this.props;
-
-    if (products.length === 0) {
-      return <h1>Loadding...</h1>
-    }
-
-    return (
-      <AppContainer className="App">
-        <ShopHeader />
-        <Switch>
-          <Route exact path="/" component={ShopMenu} />
-          <Route path="/admin" component={AdminPage} />
-          <Route path='/mobile' component={MobilePage} />
-          <Route path='/tablet' component={TabletProducts} />
-          <Route path='/desktop' component={DesktopProducts} />
-        </Switch>
-      </AppContainer>
-    );
-  }
+function App() {
+  return (
+    <AppContainer className="App">
+      <Header />
+      <ShopPage />
+    </AppContainer>
+  );
 }
 
-const mapStateToProps = state => state.productsReducer;
-
-export default withRouter(connect(mapStateToProps, { fetchProducts: productsOperations.fetchProducts, })(App));
+export default App;
