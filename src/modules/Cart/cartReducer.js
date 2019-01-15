@@ -2,7 +2,7 @@ import * as constants from './cartConstants';
 
 const initialState = {
   allProducts: [],
-  addedProductId: [],
+  productsId: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -10,12 +10,12 @@ export default function reducer(state = initialState, action) {
     case constants.ADD_STATE:
       return Object.assign({}, state, {
         allProducts: action.payload,
-        addedProductId: [...state.addedProductId],
+        productsId: [...state.productsId],
       })
     case constants.ADD_PRODUCT:
       return Object.assign({}, state, {
         allProducts: state.allProducts,
-        addedProductId: [...state.addedProductId, action.payload],
+        productsId: [...state.productsId, action.payload],
       });
 
     default:

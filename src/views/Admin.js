@@ -7,7 +7,7 @@ import DeleteProduct from '../components/Admin/DeleteProduct';
 import AdminMenu from '../components/Admin/AdminMenu';
 import AdminHeader from '../components/Admin/AdminHeader';
 
-const AdminPage = () => {
+const Admin = () => {
   return (
     <div>
       <AdminHeader / >
@@ -21,4 +21,4 @@ const AdminPage = () => {
   )
 }
 
-export default AdminPage;
+export default Admin;

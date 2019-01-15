@@ -1,7 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Header, HeaderLink, HeaderNav } from '../../style/HeaderStyle/HeaderStyle';
 
-const ShopHeader = ({ match, addedProductId }) => {
+const header = ({ productsId }) => {
   return (
     <Header>
       <HeaderNav>
@@ -9,12 +10,13 @@ const ShopHeader = ({ match, addedProductId }) => {
           <HeaderLink to="/">Shop</HeaderLink>
         </li>
         <li>
-          <HeaderLink to={`/cart`}>Cart</HeaderLink> 
-          {/* <HeaderLink to={`${match.path}/cart`}>Cart({addedProductId.length})</HeaderLink> */}
+          <HeaderLink to={`/cart`}>Cart({productsId.length})</HeaderLink>
         </li>
       </HeaderNav>
     </Header>
   )
 }
 
-export default ShopHeader;
+const mapStateToProps = state => state.cartReducer;
+
+export default connect(mapStateToProps)(header);
