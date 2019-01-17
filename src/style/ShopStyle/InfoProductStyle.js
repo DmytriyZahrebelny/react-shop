@@ -9,12 +9,12 @@ export const Product = styled.div`
 `;
 
 export const ProductTitle = styled.h1`
-  color: #FB4128;
+  color: #000000;
 `;
 
 export const ProductDescription = styled.p`
   width: 400px;
-  color: #FB4128;
+  color: #000000;
 `;
 
 export const Button = styled.a`
@@ -39,10 +39,11 @@ export const ProductPrice = styled.p`
   display: block;
   width: 200px;
   margin: 0 auto;
-  padding: 10px;
-  font-size: 20px;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
   text-align: center;
-  color: #FB4128;
+  color: #000000;
 `;
 
 export const ProductImg = styled.img`

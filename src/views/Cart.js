@@ -21,14 +21,16 @@ class Cart extends Component {
     }, 0);
 
     return (
-      <CartContainer>
-        <ListProducts>
-          {Object.keys(quantityProducts).map(id => products.filter(product => product.id === id))
-              .reduce((acc, arr) => [...acc, ...arr], [])
-              .map(product => <Products key={product.id} product={product} quantityProducts={quantityProducts} />)}
-        </ListProducts>
-        <Sidebar allPrice={allPrice} />
-      </CartContainer>
+        <form action="#">
+          <CartContainer>
+            <ListProducts>
+              {Object.keys(quantityProducts).map(id => products.filter(product => product.id === id))
+                .reduce((acc, arr) => [...acc, ...arr], [])
+                .map(product => <Products key={product.id} product={product} quantityProducts={quantityProducts} />)}
+            </ListProducts>
+            <Sidebar allPrice={allPrice} />
+          </CartContainer>
+        </form>
     )
   }
 }

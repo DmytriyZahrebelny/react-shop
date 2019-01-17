@@ -8,17 +8,15 @@ import TabletProducts from '../components/Shop/TabletProducts';
 import DesktopProducts from '../components/Shop/DesktopProducts';
 import ShopPage from '../components/Shop/ShopPage';
 
-function shop() {
-  return (
-    <Switch>
-      <Route exact path="/" component={ShopMenu} />
-      <Route path="/admin" component={Admin} />
-      <Route path="/cart" component={Cart} />
-      <Route path="/mobile" component={ShopPage} />
-      <Route path="/tablet" component={TabletProducts} />
-      <Route path="/desktop" component={DesktopProducts} />
-    </Switch>
-  );
-}
+const shop = () => (
+  <Switch>
+    <Route exact path="/" component={ShopMenu} />
+    <Route path="/admin" component={Admin} />
+    <Route path="/cart" component={Cart} />
+    <Route path="/mobile" component={ShopPage} />
+    <Route path="/tablet" component={TabletProducts} />
+    <Route path="/desktop" component={DesktopProducts} />
+  </Switch>
+);
 
 export default shop;
