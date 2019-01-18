@@ -17,6 +17,7 @@ export const HeaderNav = styled.ul`
 export const HeaderLink = styled(Link)`
   display: block;
   padding: 20px;
-  font-size: 18px;
+  font-size: 22px;
+  text-decoration: none;
   color: #fff;
 `;

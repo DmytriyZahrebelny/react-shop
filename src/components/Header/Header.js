@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Header, HeaderLink, HeaderNav } from '../../style/HeaderStyle/HeaderStyle';
+import HeaderMenu from './HeaderMenu';
 
 const header = ({ productsId }) => {
   return (
@@ -13,6 +14,7 @@ const header = ({ productsId }) => {
           <HeaderLink to={`/cart`}>Cart({productsId.length})</HeaderLink>
         </li>
       </HeaderNav>
+      <HeaderMenu />
     </Header>
   )
 }
