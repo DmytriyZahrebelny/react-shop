@@ -1,19 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Header, HeaderLink, HeaderNav } from '../../style/HeaderStyle/HeaderStyle';
+import { Header } from '../../style/HeaderStyle/HeaderStyle';
 import HeaderMenu from './HeaderMenu';
+import TopHeader from './TopHeader';
 
-const header = ({ productsId }) => {
+const header = (props) => {
   return (
     <Header>
-      <HeaderNav>
-        <li>
-          <HeaderLink to="/">Shop</HeaderLink>
-        </li>
-        <li>
-          <HeaderLink to={`/cart`}>Cart({productsId.length})</HeaderLink>
-        </li>
-      </HeaderNav>
+      <TopHeader {...props} />
       <HeaderMenu />
     </Header>
   )

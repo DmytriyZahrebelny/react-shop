@@ -1,5 +1,5 @@
 import React from 'react';
-import { AllPrice, ToPayText, Button } from '../../style/ShopStyle/CartStyle';
+import { AllPrice, ToPayText, Button } from '../../style/CartStyle/CartStyle';
 
 const sidebar = ({ allPrice }) => (
   <AllPrice>

@@ -6,6 +6,7 @@ import * as productsOperations from '../../modules/Products/productsOperations';
 import * as actions from '../../modules/Cart/cartActions';
 import MobileProducts from './MobileProducts';
 import InfoProduct from './InfoProduct';
+import Loadding from './Loadding';
 
 class ShopPage extends Component {
   componentDidMount() {
@@ -16,7 +17,7 @@ class ShopPage extends Component {
     const { products, addProduct } = this.props;
 
     if (products.length === 0) {
-      return <h1>Loadding...</h1>
+      return <Loadding />
     }
 
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Product, ProductImg, ProductDescriptions, ProductPrice, AmountProduct } from '../../style/ShopStyle/CartStyle';
+import { Product, ProductImg, ProductDescriptions, ProductPrice, AmountProduct } from '../../style/CartStyle/CartStyle';
 
 const product = ({ product, quantityProducts }) => (
   <Product>

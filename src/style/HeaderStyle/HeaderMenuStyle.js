@@ -9,7 +9,7 @@ export const HeaderMenu = styled.div`
 
 export const HeaderMenuLink = styled(Link)`
   display: block;
-  padding: 0 20px 20px;
+  padding: 15px 20px 15px;
   font-size: 16px;
   text-decoration: none;
   color: #fff;

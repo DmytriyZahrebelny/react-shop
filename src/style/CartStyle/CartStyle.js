@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Product = styled.li`
   display: flex;
   justify-content: space-between;
-  width: 630px;
+  width: 830px;
   padding: 10px 0;
   border-bottom: 2px solid #FB4128;
 `;
@@ -11,10 +11,10 @@ export const Product = styled.li`
 export const CartContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 930px;
+  width: 1160px;
   min-height: 800px;
   margin: 10px auto 0;
-  padding: 10px;
+  padding: 20px;
   background-color: #ffffff;
 `;
 
@@ -55,6 +55,7 @@ export const ListProducts = styled.ul`
 
 export const AllPrice = styled.div`
   width: 250px;
+  margin-top: 20px;
 `;
 
 export const ToPayText = styled.b`
