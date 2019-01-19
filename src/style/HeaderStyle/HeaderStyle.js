@@ -20,5 +20,14 @@ export const HeaderLink = styled(Link)`
   padding: 20px 20px 0;
   font-size: 22px;
   text-decoration: none;
-  color: #fff;
+  color: #ffffff;
+`;
+
+export const TextField = styled.input`
+  width: 250px;
+  padding: 8px 0 8px 20px;
+  margin-top: 8px;
+  font-size: 18px;
+  border: none;
+  border-radius: 40px;
 `;
