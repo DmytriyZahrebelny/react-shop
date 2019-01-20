@@ -1,18 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Header } from '../../style/HeaderStyle/HeaderStyle';
+import { HeaderContainer } from '../../style/HeaderStyle/HeaderStyle';
 import HeaderMenu from './HeaderMenu';
 import TopHeader from './TopHeader';
+import * as headerActions from '../../modules/Header/headerActions';
 
-const header = (props) => {
-  return (
-    <Header>
-      <TopHeader {...props} />
-      <HeaderMenu />
-    </Header>
-  )
+const isSearched = searchTerm => {
+  return item => {
+    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
+  }
 }
 
-const mapStateToProps = state => state.cartReducer;
+class Header extends Component {
+  render() {
+    const { headerReducer : { searchProducts }, productsReduser : { products } } = this.props;
+    
+    if (searchProducts) {
+      const test = products.filter(isSearched(searchProducts));
+      console.log(test)
+    }
 
-export default connect(mapStateToProps)(header);
+    return (
+      <HeaderContainer>
+        <TopHeader {...this.props} />
+        <HeaderMenu />
+      </HeaderContainer>
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    cartReducer: state.cartReducer,
+    headerReducer: state.headerReducer,
+    productsReduser: state.productsReducer,
+  }
+};
+
+export default connect(mapStateToProps, {
+  getWord: headerActions.searchProducts,
+})(Header);

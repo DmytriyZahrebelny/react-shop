@@ -1,9 +1,9 @@
 import React from 'react';
-import { Header } from '../../style/HeaderStyle/HeaderStyle';
+import { HeaderContainer } from '../../style/HeaderStyle/HeaderStyle';
 
 const AdminHeader = () => {
   return (
-    <Header />
+    <HeaderContainer />
   )
 }
 
