@@ -1,14 +1,14 @@
 import * as constants from './headerConstants';
 
 const initialState = {
-  searchProducts: '',
+  searchProductsWords: '',
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case constants.SEARCH_PRODUCTS:
       return Object.assign({}, state, {
-        searchProducts: action.payload,
+        searchProductsWords: action.payload,
       });
 
     default:

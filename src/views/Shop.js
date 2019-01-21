@@ -7,6 +7,7 @@ import ShopMenu from '../components/Shop/ShopMenu';
 import TabletProducts from '../components/Shop/TabletProducts';
 import DesktopProducts from '../components/Shop/DesktopProducts';
 import ShopPage from '../components/Shop/ShopPage';
+import SearchPage from '../components/Search/SearchPage';
 
 const shop = () => (
   <Switch>
@@ -16,6 +17,7 @@ const shop = () => (
     <Route path="/mobile" component={ShopPage} />
     <Route path="/tablet" component={TabletProducts} />
     <Route path="/desktop" component={DesktopProducts} />
+    <Route path="/search" component={SearchPage} />
   </Switch>
 );
 
