@@ -1,6 +1,6 @@
 import React from 'react';
 import ShopMenu from './ShopMenu';
-import { HeaderMenu } from '../../style/HeaderStyle/HeaderMenuStyle';
+import { HeaderMenu, AuthLink } from '../../style/HeaderStyle/HeaderMenuStyle';
 import AdminMenu from './AdminMenu';
 
 const headerMenu = (props) => {
@@ -8,6 +8,7 @@ const headerMenu = (props) => {
     <HeaderMenu>
       <ShopMenu />
       <AdminMenu {...props} />
+      <AuthLink to='/auth'>Login</AuthLink>
     </HeaderMenu>
   )
 }

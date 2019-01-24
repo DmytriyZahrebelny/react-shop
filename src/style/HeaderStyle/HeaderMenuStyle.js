@@ -21,3 +21,15 @@ export const HeaderMenuLink = styled(Link)`
   color: #fff;
 `;
 
+export const AuthLink = styled(Link)`
+  display: block;
+  padding: 5px 20px 5px;
+  margin: 10px 10px 0;
+  height: 20px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #000;
+  border-radius: 10px;
+  background-color: #fff;
+`;
+

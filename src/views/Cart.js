@@ -21,7 +21,7 @@ class Cart extends Component {
     }, 0);
 
     return (
-        <form action="#">
+        <form onSubmit={evt => evt.preventDefault()} action="#">
           <CartContainer>
             <ListProducts>
               {Object.keys(quantityProducts).map(id => products.filter(product => product.id === id))

@@ -8,7 +8,7 @@ export const FieldsContainer = styled.div`
   left: 0;
   top: 0px;
   list-style: none;
-  background-color: rgba(0, 0, 0, 0.8)
+  background-color: rgba(0, 0, 0, 0.8);
 `;
 
 export const CurrentValue = styled.span`

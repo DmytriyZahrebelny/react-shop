@@ -9,8 +9,12 @@ export const ListProducts = styled.ul`
 export const ItemProduct = styled.li`
   display: inline-block;
   width: 265px;
-  padding: 4px 0;
+  padding: 15px 0;
   margin: 10px 10px 20px;
+
+  :hover {
+    box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.75);
+  }
 `;
 
 export const ProductName = styled.span`

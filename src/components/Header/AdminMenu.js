@@ -1,5 +1,5 @@
 import React from 'react';
-import { AdminMenuLinks, AdminMenuContainer } from '../../style/AdminStyle/AdminMenuStyle';
+import { AdminMenuLinks, AdminMenuContainer } from '../../style/HeaderStyle/AdminMenuStyle';
 
 const AdminMenu = ({ adminReducer: {isAdmin} }) => {
   if (isAdmin) {
