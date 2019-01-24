@@ -1,24 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { AdminContainer } from '../style/AdminStyle/AdminPageStyle';
 import ChangeProduct from '../components/Admin/ChangeProduct';
 import AddProduct from '../components/Admin/AddProduct';
 import DeleteProduct from '../components/Admin/DeleteProduct';
-import AdminMenu from '../components/Admin/AdminMenu';
-import AdminHeader from '../components/Admin/AdminHeader';
+import * as actions from '../modules/Admin/adminActions';
 
-const Admin = () => {
-  return (
-    <div>
-      <AdminHeader / >
+class Admin extends Component {
+  componentDidMount() {
+    const { isAdmin } = this.props;
+    isAdmin(true);
+  }
+
+  render() {
+    const { products } = this.props;
+
+    return (
       <AdminContainer>
-        <AdminMenu />
-        <Route path="/admin/change" component={ChangeProduct} />
+        <Route path="/admin/change"
+          render={
+            () => <ChangeProduct products={products} />
+          }
+        />
         <Route path="/admin/add" component={AddProduct} />
-        <Route path="/admin/delete" component={DeleteProduct}/>
+        <Route path="/admin/delete"
+          render={
+            () => <DeleteProduct products={products} />
+          }
+        />
       </AdminContainer>
-    </div>
-  )
-}
+    )
+  }
+};
 
-export default Admin;
+const mapStateToProps = state => state.productsReducer;
+
+export default connect(mapStateToProps, { isAdmin: actions.isAdmin })(Admin);

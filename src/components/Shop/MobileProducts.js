@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ProductsList, ProductItem,Button } from '../../style/ShopStyle/MobileProductsStyle';
+import { ProductsList, ProductItem, Button } from '../../style/ShopStyle/MobileProductsStyle';
 import ProductLink from './ProductLink'
 
 class MobileProducts extends Component {

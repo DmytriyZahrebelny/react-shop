@@ -1,12 +1,13 @@
 import React from 'react';
-import { HeaderMenu, HeaderMenuLink } from '../../style/HeaderStyle/HeaderMenuStyle';
+import ShopMenu from './ShopMenu';
+import { HeaderMenu } from '../../style/HeaderStyle/HeaderMenuStyle';
+import AdminMenu from './AdminMenu';
 
-const headerMenu = () => {
+const headerMenu = (props) => {
   return (
     <HeaderMenu>
-      <HeaderMenuLink to="/mobile">Mobile</HeaderMenuLink>
-      <HeaderMenuLink to="/tablet">Tablet</HeaderMenuLink>
-      <HeaderMenuLink to="/desktop">Desktop</HeaderMenuLink>
+      <ShopMenu />
+      <AdminMenu {...props} />
     </HeaderMenu>
   )
 }

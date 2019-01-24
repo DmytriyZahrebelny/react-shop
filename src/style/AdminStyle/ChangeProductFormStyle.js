@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const FieldsContainer = styled.div`
-  position: absolute;
+  position: fixed;
   content: "";
-  width: 500px;
-  height: 500px;
-  left: 835px;
-  top: 125px;
+  width: 100%;
+  height: 800px;
+  left: 0;
+  top: 0px;
   list-style: none;
+  background-color: rgba(0, 0, 0, 0.8)
 `;
 
 export const CurrentValue = styled.span`
@@ -53,4 +54,10 @@ export const Input = styled.input`
   background-color: #ffffff;
   border: 2px solid #FF8F33;
   border-radius: 25px;
+`;
+
+export const Form = styled.div`
+  width: 600px;
+  height: 800px;
+  margin: 50px auto 0;
 `;

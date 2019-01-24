@@ -19,3 +19,8 @@ export const deleteProduct = payload => ({
   type: constants.DELETE_PRODUCT,
   payload,
 });
+
+export const isAdmin = payload => ({
+  type: constants.IS_ADMIN,
+  payload,
+});

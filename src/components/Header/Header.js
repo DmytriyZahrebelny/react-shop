@@ -3,18 +3,24 @@ import { connect } from 'react-redux';
 import { HeaderContainer } from '../../style/HeaderStyle/HeaderStyle';
 import HeaderMenu from './HeaderMenu';
 import TopHeader from './TopHeader';
-import * as headerActions from '../../modules/Header/headerActions';
+import * as actions from '../../modules/Header/headerActions';
 
-const header = (props) => (
-  <HeaderContainer>
-    <TopHeader {...props} />
-    <HeaderMenu />
-  </HeaderContainer>
-);
+const header = (props) => {
+  return (
+    <HeaderContainer>
+      <TopHeader {...props} />
+      <HeaderMenu {...props} />
+    </HeaderContainer>
+  )
+};
 
-
-const mapStateToProps = state => state.cartReducer;
+const mapStateToProps = state => {
+  return {
+    cartReducer: state.cartReducer,
+    adminReducer: state.adminReducer,
+  };
+};
 
 export default connect(mapStateToProps, {
-  getWord: headerActions.searchProducts,
+  getWord: actions.searchProducts,
 })(header);

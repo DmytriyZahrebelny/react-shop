@@ -1,28 +1,31 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { ListProducts, ItemProduct, LinkProduct } from '../../style/AdminStyle/ChangeProductStyle';
+import { ListProducts, ItemProduct, ProductName, ProductImg, ChangeProductInput } from '../../style/AdminStyle/ChangeProductStyle';
 import ChangeProductForm from './ChangeProductForm';
 
 const ChangeProduct = ({ products }) => {
-  const product = products.map((product) => {
-    return (
-      <ItemProduct key={product.id}>
-        <LinkProduct to={`/admin/change/${product.id}`}>{product.title}</LinkProduct>
-      </ItemProduct>
-    );
-  })
-
   return (
     <div>
       <ListProducts>
-        {product}
+        {
+          products.map((product) => {
+            return (
+              <ItemProduct key={product.id}>
+                <ProductImg src={product.image} alt='img' />
+                <ProductName>{product.title}</ProductName>
+                <ChangeProductInput to={`/admin/change/${product.id}`}>Change Product</ChangeProductInput>
+              </ItemProduct>
+            );
+          })
+        }
       </ListProducts>
-      <Route path={`/admin/change/:id`} component={ChangeProductForm} />
+      <Route path={`/admin/change/:id`}
+        render={
+          (match) => <ChangeProductForm match={match} products={products} />
+        }
+      />
     </div>
   )
 }
 
-const mapStateToProps = state => state.productsReducer;
-
-export default connect(mapStateToProps)(ChangeProduct);
+export default ChangeProduct;
