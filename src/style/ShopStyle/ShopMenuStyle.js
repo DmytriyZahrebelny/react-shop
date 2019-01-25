@@ -6,7 +6,7 @@ export const ShopMenuContainer = styled.ul`
   justify-content: space-around;
   width: 1200px;
   height: 750px;
-  padding: 0;
+  padding: 20px 0;
   margin: 20px auto;
   list-style: none;
   background-color: #ffffff;
@@ -21,4 +21,8 @@ export const ShopMenuLink = styled(Link)`
   text-align: center;
   color: #FB4128;
   text-decoration: none;
+
+  :hover {
+    box-shadow: 1px 1px 4px 0px rgba(0,0,0,0.75);
+  }
 `;
