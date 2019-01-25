@@ -6,7 +6,7 @@
   },
   "proxies": {
     "/api/": {
-      "origin": "https://online-store-api-kanoru.herokuapp.com/api"
+      "origin": "https://apiko-api.herokuapp.com/api"
     }
   }
 }
