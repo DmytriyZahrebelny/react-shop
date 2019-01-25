@@ -8,7 +8,7 @@ import TabletProducts from '../components/Shop/TabletProducts';
 import DesktopProducts from '../components/Shop/DesktopProducts';
 import ShopPage from '../components/Shop/ShopPage';
 import SearchPage from '../components/Search/SearchPage';
-import Auth from '../components/Auth/Auth';
+import AuthPage from '../components/Auth/AuthPage';
 
 const shop = () => (
   <Switch>
@@ -19,7 +19,7 @@ const shop = () => (
     <Route path="/tablet" component={TabletProducts} />
     <Route path="/desktop" component={DesktopProducts} />
     <Route path="/search" component={SearchPage} />
-    <Route path="/auth" component={Auth} />
+    <Route path="/auth" component={AuthPage} />
   </Switch>
 );
 
