@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ProductsList, ProductItem, Button } from '../../style/ShopStyle/MobileProductsStyle';
-import ProductLink from './ProductLink'
+import { array, object, shape, func } from 'prop-types';
+import ProductLink from './ProductLink';
 
 class MobileProducts extends Component {
   constructor(props) {
@@ -30,5 +31,13 @@ class MobileProducts extends Component {
     );
   }
 }
+
+MobileProducts.propTypes = {
+  products: array.isRequired,
+  addProduct: func.isRequired,
+  url: shape({
+    match: object.isRequired,
+  }),
+};
 
 export default MobileProducts;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { array, object, shape, func } from 'prop-types';
 import { Product, ProductTitle, ProductDescription, Button, ProductPrice, ProductImg } from '../../style/ShopStyle/InfoProductStyle';
 
 const infoProduct = ({ products, addProduct, url : { match } }) => {
@@ -32,5 +33,13 @@ const infoProduct = ({ products, addProduct, url : { match } }) => {
     </Product>
   );
 }
+
+infoProduct.propTypes = {
+  products: array.isRequired,
+  addProduct: func.isRequired,
+  url: shape({
+    match: object.isRequired,
+  }),
+};
 
 export default infoProduct;
