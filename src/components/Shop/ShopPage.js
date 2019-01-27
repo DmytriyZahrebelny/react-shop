@@ -7,10 +7,12 @@ import MobileProducts from './MobileProducts';
 import InfoProduct from './InfoProduct';
 
 const shopPage = ({ products, addProduct }) => (
-  <Switch>
-    <Route exact path="/mobile" render={(match) => <MobileProducts url={match} products={products} addProduct={addProduct} />} />
-    <Route path="/mobile/:id" render={(match) => <InfoProduct url={match} products={products} addProduct={addProduct} />} />
-  </Switch>
+  <div>
+    <Switch>
+      <Route exact path="/mobile" render={(match) => <MobileProducts url={match} products={products} addProduct={addProduct} />} />
+      <Route path="/mobile/:id" render={(match) => <InfoProduct url={match} products={products} addProduct={addProduct} />} />
+    </Switch>
+  </div>
 );
 
 shopPage.propTypes = {

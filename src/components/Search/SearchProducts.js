@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ProductsList, ProductItem,Button } from '../../style/ShopStyle/MobileProductsStyle';
+import { array, object, shape, func } from 'prop-types';
 import ProductLink from '../Shop/ProductLink';
 
 class SearchProducts extends Component {
@@ -29,6 +30,14 @@ class SearchProducts extends Component {
       </ProductsList>
     );
   }
+};
+
+SearchProducts.propTypes = {
+  addProduct: func.isRequired,
+  searchProduct: array.isRequired,
+  url: shape({
+    match: object.isRequired,
+  }),
 };
 
 export default SearchProducts;

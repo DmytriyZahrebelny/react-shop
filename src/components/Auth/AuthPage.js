@@ -41,10 +41,12 @@ class AuthPage extends Component {
             <LoginLink state={this.state} onClick={this.onLoginLinkClick} to="/auth">Login</LoginLink>
             <RegistrationLink state={this.state} onClick={this.onRegistrationLinkClick} to="/auth/registration">Registration</RegistrationLink>
           </LinkBox>
-          <Switch>
-            <Route exact path="/auth" render={() => <LoginForm onSubmit={this.submit} />} />
-            <Route path="/auth/registration" render={() => <RegistrationForm onSubmit={this.submit} />} />
-          </Switch>
+          <div>
+            <Switch>
+              <Route exact path="/auth" render={() => <LoginForm onSubmit={this.submit} />} />
+              <Route path="/auth/registration" render={() => <RegistrationForm onSubmit={this.submit} />} />
+            </Switch>
+          </div>
         </Container>
       </Auth>
     );

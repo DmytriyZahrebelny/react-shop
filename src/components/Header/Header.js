@@ -5,14 +5,12 @@ import HeaderMenu from './HeaderMenu';
 import TopHeader from './TopHeader';
 import * as actions from '../../modules/Header/headerActions';
 
-const header = (props) => {
-  return (
-    <HeaderContainer>
-      <TopHeader {...props} />
-      <HeaderMenu {...props} />
-    </HeaderContainer>
-  )
-};
+const header = (props) => (
+  <HeaderContainer>
+    <TopHeader {...props} />
+    <HeaderMenu {...props} />
+  </HeaderContainer>
+);
 
 const mapStateToProps = state => {
   return {

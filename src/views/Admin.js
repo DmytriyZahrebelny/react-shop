@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
+import { array, func } from 'prop-types';
 import { AdminContainer } from '../style/AdminStyle/AdminPageStyle';
 import ChangeProduct from '../components/Admin/ChangeProduct';
 import AddProduct from '../components/Admin/AddProduct';
@@ -32,6 +33,11 @@ class Admin extends Component {
       </AdminContainer>
     )
   }
+};
+
+Admin.propTypes = {
+  isAdmin: func.isRequired,
+  products: array.isRequired,
 };
 
 const mapStateToProps = state => state.productsReducer;

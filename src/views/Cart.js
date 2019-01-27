@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { array, shape } from 'prop-types';
 import { CartContainer, ListProducts } from '../style/CartStyle/CartStyle';
 import Products from '../components/Cart/Product';
 import Sidebar from '../components/Cart/Sidebar';
@@ -21,19 +22,27 @@ class Cart extends Component {
     }, 0);
 
     return (
-        <form onSubmit={evt => evt.preventDefault()} action="#">
-          <CartContainer>
-            <ListProducts>
-              {Object.keys(quantityProducts).map(id => products.filter(product => product.id === id))
-                .reduce((acc, arr) => [...acc, ...arr], [])
-                .map(product => <Products key={product.id} product={product} quantityProducts={quantityProducts} />)}
-            </ListProducts>
-            <Sidebar allPrice={allPrice} />
-          </CartContainer>
-        </form>
+      <form onSubmit={evt => evt.preventDefault()} action="#">
+        <CartContainer>
+          <ListProducts>
+            {Object.keys(quantityProducts).map(id => products.filter(product => product.id === id))
+              .reduce((acc, arr) => [...acc, ...arr], [])
+              .map(product => <Products key={product.id} product={product} quantityProducts={quantityProducts} />)}
+          </ListProducts>
+          <Sidebar allPrice={allPrice} />
+        </CartContainer>
+      </form>
     )
   }
 }
+Cart.propTypes = {
+  products: shape({
+    products: array.isRequired,
+  }),
+  selectedProduct: shape({
+    productsId: array.isRequired,
+  }),
+};
 
 const mapStateToProps = state => {
   return {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Field, reduxForm} from 'redux-form';
+import { func } from 'prop-types';
 import ErrorField from './ErrorField';
 import { FormContainer, Button } from '../../style/AuthStyle/AuthStyle';
 
@@ -27,6 +28,10 @@ class LoginForm extends Component {
     );
   }
 }
+
+LoginForm.propTypes = {
+  handleSubmit: func.isRequired,
+};
 
 const validate = ({ username, password }) => {
   const errors = {};

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { array, shape, func } from 'prop-types';
 import { HeaderLink, TopHeader, TextField } from '../../style/HeaderStyle/HeaderStyle';
 import history from '../../modules/history';
 
@@ -39,5 +40,12 @@ class Header extends Component {
     )
   }
 }
+
+Header.propTypes = {
+  getWord: func.isRequired,
+  cartReducer: shape({
+    productsId: array.isRequired,
+  }),
+};
 
 export default Header;

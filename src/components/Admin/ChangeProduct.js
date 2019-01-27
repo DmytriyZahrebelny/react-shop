@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { array } from 'prop-types';
 import { ListProducts, ItemProduct, ProductName, ProductImg, ChangeProductInput } from '../../style/AdminStyle/ChangeProductStyle';
 import ChangeProductForm from './ChangeProductForm';
 
@@ -27,5 +28,9 @@ const ChangeProduct = ({ products }) => {
     </div>
   )
 }
+
+ChangeProduct.propTypes = {
+  products: array.isRequired,
+};
 
 export default ChangeProduct;

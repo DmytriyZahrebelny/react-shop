@@ -1,4 +1,5 @@
 import React from 'react';
+import { array } from 'prop-types';
 import { ListProduct, DeleteElement } from '../../style/AdminStyle/DeleteProductsStyle';
 import { ItemProduct, ProductName, ProductImg } from '../../style/AdminStyle/ChangeProductStyle';
 
@@ -19,5 +20,9 @@ const DeleteProducts = ({ products }) => {
     </ListProduct>
   )
 }
+
+DeleteProducts.propTypes = {
+  products: array.isRequired,
+};
 
 export default DeleteProducts;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { object, string, number, shape } from 'prop-types';
 import { Product, ProductImg, ProductDescriptions, ProductPrice, AmountProduct } from '../../style/CartStyle/CartStyle';
 
 const product = ({ product, quantityProducts }) => (
@@ -9,5 +10,15 @@ const product = ({ product, quantityProducts }) => (
     <ProductDescriptions>{product.title}</ProductDescriptions>
   </Product>
 );
+
+product.propTypes = {
+  product: shape({
+    image: string.isRequired,
+    price: number.isRequired,
+    id: string.isRequired,
+    title: string,
+  }),
+  quantityProducts: object.isRequired,
+};
 
 export default product;

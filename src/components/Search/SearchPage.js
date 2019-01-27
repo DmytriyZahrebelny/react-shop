@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-
+import { array, string, shape, func } from 'prop-types';
 import * as actions from '../../modules/Cart/cartActions';
 import SearchProducts from './SearchProducts';
 import InfoProduct from '../Shop/InfoProduct';
@@ -21,11 +21,23 @@ const searchPage = ({ addProduct, headerReducer : { searchProductsWords }, produ
   }
 
   return (
-    <Switch>
-      <Route exact path="/search" render={(match) => <SearchProducts url={match} searchProduct={searchProduct} addProduct={addProduct} />} />
-      <Route path="/search/:id" render={(match) => <InfoProduct url={match} products={products} addProduct={addProduct} />} />
-    </Switch>
+    <div>
+      <Switch>
+        <Route exact path="/search" render={(match) => <SearchProducts url={match} searchProduct={searchProduct} addProduct={addProduct} />} />
+        <Route path="/search/:id" render={(match) => <InfoProduct url={match} products={products} addProduct={addProduct} />} />
+      </Switch>
+    </div>
 )};
+
+searchPage.propTypes = {
+  addProduct: func.isRequired,
+  productsReduser: shape({
+    products: array.isRequired,
+  }),
+  headerReducer: shape({
+    searchProductsWords: string.isRequired,
+  }),
+};
 
 const mapStateToProps = state => {
   return {

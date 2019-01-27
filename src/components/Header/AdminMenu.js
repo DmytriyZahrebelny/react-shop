@@ -1,4 +1,5 @@
 import React from 'react';
+import { shape, bool } from 'prop-types';
 import { AdminMenuLinks, AdminMenuContainer } from '../../style/HeaderStyle/AdminMenuStyle';
 
 const AdminMenu = ({ adminReducer: {isAdmin} }) => {
@@ -13,6 +14,12 @@ const AdminMenu = ({ adminReducer: {isAdmin} }) => {
   }
 
   return null;
+};
+
+AdminMenu.propTypes = {
+  adminReducer: shape({
+    isAdmin: bool.isRequired,
+  }),
 };
 
 export default AdminMenu;

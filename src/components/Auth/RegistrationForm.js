@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Field, reduxForm} from 'redux-form';
 import emailValidator from 'email-validator';
+import { func } from 'prop-types';
 import ErrorField from './ErrorField'
 import { FormContainer, Button } from '../../style/AuthStyle/AuthStyle';
 
@@ -41,6 +42,10 @@ class RegistrationForm extends Component {
     );
   }
 }
+
+RegistrationForm.propTypes = {
+  handleSubmit: func.isRequired,
+};
 
 const validate = ({ email, password, firstname, secondname }) => {
   const errors = {};
