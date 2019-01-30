@@ -21,7 +21,7 @@ class Header extends Component {
   }
 
   render() {
-    const { cartReducer: { productsId } } = this.props;
+    const { productsId } = this.props;
 
     return (
       <TopHeader>
