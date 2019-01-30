@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
-import * as productsOperations from './modules/Products/productsOperations';
-import { AppContainer } from './style/AppStyle/AppStyle';
-import Header from './components/Header/Header';
-import Shop from './views/Shop';
-import Loadding from './components/Shop/Loadding';
+import * as productsOperations from "./modules/Products/productsOperations";
+import { AppContainer } from "./style/AppStyle/AppStyle";
+import Header from "./components/Header/Header";
+import Shop from "./views/Shop";
+import Loadding from "./components/Shop/Loadding";
 
 class App extends Component {
   componentDidMount() {
@@ -17,9 +17,9 @@ class App extends Component {
     const { products } = this.props;
 
     if (products.length === 0) {
-      return <Loadding />
+      return <Loadding />;
     }
-
+    console.log("render");
     return (
       <AppContainer className="App">
         <Header />
@@ -31,6 +31,11 @@ class App extends Component {
 
 const mapStateToProps = state => state.productsReducer;
 
-export default withRouter(connect(mapStateToProps, {
-  fetchProducts: productsOperations.fetchProducts,
-})(App));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    {
+      fetchProducts: productsOperations.fetchProducts
+    }
+  )(App)
+);
