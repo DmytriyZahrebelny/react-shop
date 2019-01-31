@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { array, shape, func } from 'prop-types';
+import React, { PureComponent } from 'react';
+import { array, shape, func, object } from 'prop-types';
 import { HeaderLink, TopHeader, TextField } from '../../style/HeaderStyle/HeaderStyle';
 import history from '../../modules/history';
 
-class Header extends Component {
+class Header extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -12,10 +12,12 @@ class Header extends Component {
 
   getWords(evt) {
     evt.preventDefault();
-    const { getWord } = this.props;
+    const { getWord, router: { location } } = this.props;
 
-    if (evt.target.search.value) {
+    if (location.pathname !== '/search') {
       history.push('/search');
+      return getWord(evt.target.search.value);
+    } else {
       getWord(evt.target.search.value);
     }
   }
@@ -45,6 +47,9 @@ Header.propTypes = {
   getWord: func.isRequired,
   cartReducer: shape({
     productsId: array.isRequired,
+  }),
+  router: shape({
+    location: object.isRequired,
   }),
 };
 

@@ -4,7 +4,6 @@ import { HeaderContainer } from '../../style/HeaderStyle/HeaderStyle';
 import HeaderMenu from './HeaderMenu';
 import TopHeader from './TopHeader';
 import * as actions from '../../modules/Header/headerActions';
-import * as selector from '../../modules/Header/slector';
 
 class Header extends Component {
   render() {
@@ -19,8 +18,9 @@ class Header extends Component {
 
 const mapStateToProps = state => {
   return {
-    productsId: selector.cartSelector(state),
-    isAdmin: selector.adminSelector(state),
+    productsId: state.cartReducer,
+    isAdmin: state.adminReducer,
+    router: state.router,
   };
 };
 

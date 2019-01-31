@@ -2,7 +2,7 @@ import React from 'react';
 import { shape, bool } from 'prop-types';
 import { AdminMenuLinks, AdminMenuContainer } from '../../style/HeaderStyle/AdminMenuStyle';
 
-const AdminMenu = ({ isAdmin }) => {
+const AdminMenu = ({ isAdmin: { isAdmin } }) => {
   if (isAdmin) {
     return (
       <AdminMenuContainer>
