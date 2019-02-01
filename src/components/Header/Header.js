@@ -1,29 +1,28 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { PureComponent } from 'react';
 import { HeaderContainer } from '../../style/HeaderStyle/HeaderStyle';
 import HeaderMenu from './HeaderMenu';
 import TopHeader from './TopHeader';
-import * as actions from '../../modules/Header/headerActions';
 
-class Header extends Component {
+class Header extends PureComponent {
   render() {
+    console.log('render')
     return (
       <HeaderContainer>
-        <TopHeader {...this.props} />
-        <HeaderMenu {...this.props} />
+        <TopHeader />
+        <HeaderMenu />
       </HeaderContainer>
     );
   }
-};
+}
 
-const mapStateToProps = state => {
-  return {
-    productsId: state.cartReducer,
-    isAdmin: state.adminReducer,
-    router: state.router,
-  };
-};
+// const Header = () => {
+//   console.log('render')
+//   return (
+//     <HeaderContainer>
+//       <TopHeader />
+//       <HeaderMenu />
+//     </HeaderContainer>
+//   );
+// }
 
-export default connect(mapStateToProps, {
-  getWord: actions.searchProducts,
-})(Header);
+export default Header;

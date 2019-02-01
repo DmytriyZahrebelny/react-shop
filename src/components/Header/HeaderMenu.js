@@ -3,10 +3,10 @@ import ShopMenu from './ShopMenu';
 import { HeaderMenu, AuthLink } from '../../style/HeaderStyle/HeaderMenuStyle';
 import AdminMenu from './AdminMenu';
 
-const headerMenu = (props) => (
+const headerMenu = () => (
   <HeaderMenu>
     <ShopMenu />
-    <AdminMenu {...props} />
+    <AdminMenu />
     <AuthLink to='/auth'>Login</AuthLink>
   </HeaderMenu>
 );

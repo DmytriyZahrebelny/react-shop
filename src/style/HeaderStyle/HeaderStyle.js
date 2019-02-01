@@ -5,7 +5,7 @@ export const HeaderContainer = styled.header`
   background-color: #FF5122;
 `;
 
-export const TopHeader = styled.ul`
+export const TopHeaderNav = styled.ul`
   display: flex;
   justify-content: space-between;
   width: 1200px;

@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import { array, shape, func, object } from 'prop-types';
-import { HeaderLink, TopHeader, TextField } from '../../style/HeaderStyle/HeaderStyle';
+import { HeaderLink, TopHeaderNav, TextField } from '../../style/HeaderStyle/HeaderStyle';
 import history from '../../modules/history';
+import * as actions from '../../modules/Header/headerActions';
 
-class Header extends PureComponent {
+class TopHeader extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -23,10 +25,10 @@ class Header extends PureComponent {
   }
 
   render() {
-    const { productsId } = this.props;
+    const { productsId : { productsId } } = this.props;
 
     return (
-      <TopHeader>
+      <TopHeaderNav>
         <li>
           <HeaderLink to="/">Shop</HeaderLink>
         </li>
@@ -38,12 +40,12 @@ class Header extends PureComponent {
         <li>
           <HeaderLink to={`/cart`}>Cart({productsId.length})</HeaderLink>
         </li>
-      </TopHeader>
+      </TopHeaderNav>
     )
   }
 }
 
-Header.propTypes = {
+TopHeader.propTypes = {
   getWord: func.isRequired,
   cartReducer: shape({
     productsId: array.isRequired,
@@ -53,4 +55,14 @@ Header.propTypes = {
   }),
 };
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    productsId: state.cartReducer,
+    router: state.router,
+  };
+}
+
+export default connect(mapStateToProps, {
+  getWord: actions.searchProducts,
+})(TopHeader);
+

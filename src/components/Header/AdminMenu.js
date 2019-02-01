@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { shape, bool } from 'prop-types';
 import { AdminMenuLinks, AdminMenuContainer } from '../../style/HeaderStyle/AdminMenuStyle';
 
-const AdminMenu = ({ isAdmin: { isAdmin } }) => {
+const AdminMenu = ({ isAdmin }) => {
   if (isAdmin) {
     return (
       <AdminMenuContainer>
@@ -22,4 +23,6 @@ AdminMenu.propTypes = {
   }),
 };
 
-export default AdminMenu;
+const mapStateToProps = state => state.adminReducer;
+
+export default connect(mapStateToProps)(AdminMenu);
