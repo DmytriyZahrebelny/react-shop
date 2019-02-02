@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { ProductsList, ProductItem, Button } from '../../style/ShopStyle/MobileProductsStyle';
 import { array, object, shape, func } from 'prop-types';
 import ProductLink from './ProductLink';
@@ -17,7 +18,7 @@ class MobileProducts extends Component {
   }
 
   render() {
-    const { products, url : { match } } = this.props;
+    const { products, match } = this.props;
 
     return (
       <ProductsList>
@@ -40,4 +41,4 @@ MobileProducts.propTypes = {
   }),
 };
 
-export default MobileProducts;
+export default withRouter(MobileProducts);

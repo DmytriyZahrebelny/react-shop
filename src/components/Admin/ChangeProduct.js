@@ -20,11 +20,7 @@ const ChangeProduct = ({ products }) => {
           })
         }
       </ListProducts>
-      <Route path={`/admin/change/:id`}
-        render={
-          (match) => <ChangeProductForm match={match} products={products} />
-        }
-      />
+      <Route path={`/admin/change/:id`} component={ChangeProductForm} />
     </div>
   )
 }

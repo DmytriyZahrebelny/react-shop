@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { FieldsContainer, CurrentValue, ItemParam, TextareaField, Fieldset, TextField, Legend, Input, Form } from '../../style/AdminStyle/ChangeProductFormStyle';
-import history from '../../modules/history';
 
 class ChangeProductForm extends Component {
   constructor(props) {
@@ -11,11 +12,13 @@ class ChangeProductForm extends Component {
 
   onChangeTitle(evt) {
     evt.preventDefault();
+
+    const { history } = this.props;
     history.push('/admin/change');
   };
-
+  
   render() {
-    const { match : {match}, products } = this.props;
+    const { match, products } = this.props;
 
     const currentProduct = products.filter(product => product.id === match.params.id);
     const [ product ] = currentProduct;
@@ -54,4 +57,6 @@ class ChangeProductForm extends Component {
   }
 }
 
-export default ChangeProductForm;
+const mapStateToProps = state => state.productsReducer;
+
+export default withRouter(connect(mapStateToProps)(ChangeProductForm));

@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { array, shape, func, object } from 'prop-types';
 import { HeaderLink, TopHeaderNav, TextField } from '../../style/HeaderStyle/HeaderStyle';
-import history from '../../modules/history';
 import * as actions from '../../modules/Header/headerActions';
 
 class TopHeader extends PureComponent {
@@ -14,18 +14,18 @@ class TopHeader extends PureComponent {
 
   getWords(evt) {
     evt.preventDefault();
-    const { getWord, router: { location } } = this.props;
+    const { searchProducts, location, history } = this.props;
 
     if (location.pathname !== '/search') {
       history.push('/search');
-      return getWord(evt.target.search.value);
+      return searchProducts(evt.target.search.value);
     } else {
-      getWord(evt.target.search.value);
+      searchProducts(evt.target.search.value);
     }
   }
 
   render() {
-    const { productsId : { productsId } } = this.props;
+    const { productsId } = this.props;
 
     return (
       <TopHeaderNav>
@@ -46,7 +46,7 @@ class TopHeader extends PureComponent {
 }
 
 TopHeader.propTypes = {
-  getWord: func.isRequired,
+  searchProducts: func.isRequired,
   cartReducer: shape({
     productsId: array.isRequired,
   }),
@@ -55,14 +55,9 @@ TopHeader.propTypes = {
   }),
 };
 
-const mapStateToProps = state => {
-  return {
-    productsId: state.cartReducer,
-    router: state.router,
-  };
-}
+const mapStateToProps = state => state.cartReducer;
 
-export default connect(mapStateToProps, {
-  getWord: actions.searchProducts,
-})(TopHeader);
+export default withRouter(connect(mapStateToProps, {
+  searchProducts: actions.searchProducts,
+})(TopHeader));
 

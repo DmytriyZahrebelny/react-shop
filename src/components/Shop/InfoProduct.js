@@ -1,8 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { array, object, shape, func } from 'prop-types';
 import { Product, ProductTitle, ProductDescription, Button, ProductPrice, ProductImg } from '../../style/ShopStyle/InfoProductStyle';
 
-const infoProduct = ({ products, addProduct, url : { match } }) => {
+const infoProduct = ({ products, addProduct, match }) => {
   const currentProduct = products.filter((product) => {
     return product.id === match.params.id;
   });
@@ -42,4 +43,4 @@ infoProduct.propTypes = {
   }),
 };
 
-export default infoProduct;
+export default withRouter(infoProduct);

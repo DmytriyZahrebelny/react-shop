@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { array, func } from 'prop-types';
+import { array, func, shape } from 'prop-types';
 import { AdminContainer } from '../style/AdminStyle/AdminPageStyle';
 import ChangeProduct from '../components/Admin/ChangeProduct';
 import AddProduct from '../components/Admin/AddProduct';
@@ -15,7 +15,7 @@ class Admin extends Component {
   }
 
   render() {
-    const { products } = this.props;
+    const { products : { products } } = this.props;
 
     return (
       <AdminContainer>
@@ -37,9 +37,16 @@ class Admin extends Component {
 
 Admin.propTypes = {
   isAdmin: func.isRequired,
-  products: array.isRequired,
+  products: shape({
+    products: array.isRequired
+  }),
 };
 
-const mapStateToProps = state => state.productsReducer;
+const mapStateToProps = state => {
+  return {
+    products: state.productsReducer,
+    router: state.router,
+  }
+};
 
 export default connect(mapStateToProps, { isAdmin: actions.isAdmin })(Admin);

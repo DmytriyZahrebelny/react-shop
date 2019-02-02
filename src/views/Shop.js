@@ -11,18 +11,16 @@ import SearchPage from '../components/Search/SearchPage';
 import AuthPage from '../components/Auth/AuthPage';
 
 const shop = () => (
-  <div>
-    <Switch>
-      <Route exact path="/" component={ShopMenu} />
-      <Route path="/admin" component={Admin} />
-      <Route path="/cart" component={Cart} />
-      <Route path="/mobile" component={ShopPage} />
-      <Route path="/tablet" component={TabletProducts} />
-      <Route path="/desktop" component={DesktopProducts} />
-      <Route path="/search" component={SearchPage} />
-      <Route path="/auth" component={AuthPage} />
-    </Switch>
-  </div>
+  <Switch>
+    <Route exact path="/" component={ShopMenu} />
+    <Route path="/admin" component={Admin} />
+    <Route path="/cart" component={Cart} />
+    <Route path="/mobile" component={ShopPage} />
+    <Route path="/tablet" component={TabletProducts} />
+    <Route path="/desktop" component={DesktopProducts} />
+    <Route path="/search" component={SearchPage} />
+    <Route path="/auth" component={AuthPage} />
+  </Switch>
 );
 
 export default shop;
