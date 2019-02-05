@@ -38,7 +38,7 @@ class AuthPage extends Component {
       <Auth>
         <Container>
           <LinkBox>
-            <LoginLink state={this.state} onClick={this.onLoginLinkClick} to="/auth">Login</LoginLink>
+            <LoginLink activelink={this.state} onClick={this.onLoginLinkClick} to="/auth">Login</LoginLink>
             <RegistrationLink state={this.state} onClick={this.onRegistrationLinkClick} to="/auth/registration">Registration</RegistrationLink>
           </LinkBox>
           <div>

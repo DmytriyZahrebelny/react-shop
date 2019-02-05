@@ -44,8 +44,8 @@ export const LoginLink = styled(Link)`
   font-size: 18px;
   text-align: center;
   text-decoration: none;
-  color: ${props => !props.state.activeLink ? '#FF5122' : '#ffffff'};
-  background-color: ${props => !props.state.activeLink ? '#ffffff' : '#FF5122'};
+  color: ${({ activelink }) => !activelink.activeLink ? '#FF5122' : '#ffffff'};
+  background-color: ${({ activelink }) => !activelink.activeLink ? '#ffffff' : '#FF5122'};
   border-bottom: 1px solid #FF5122;
 `;
 
