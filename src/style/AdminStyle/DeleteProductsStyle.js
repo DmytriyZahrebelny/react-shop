@@ -5,7 +5,7 @@ export const ListProduct = styled.ul`
   list-style: none;
 `;
 
-export const DeleteElement = styled.a`
+export const DeleteElement = styled.button`
   display: block;
   width: 200px;
   padding: 10px;
@@ -14,6 +14,7 @@ export const DeleteElement = styled.a`
   font-size: 20px;
   text-align: center;
   color: #FF8F33;
+  background-color: #ffffff;
   border: 2px solid #FB4128;
   border-radius: 24px;
   text-decoration: none;

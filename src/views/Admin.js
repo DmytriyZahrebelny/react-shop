@@ -14,6 +14,25 @@ class Admin extends Component {
     isAdmin(true);
   }
 
+  submit = (values) => {
+    console.log(values)
+    fetch('http://localhost:3001/add', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    })
+  };
+
+  deleteSubmit = (values) => {
+    console.log(values);
+    // fetch('http://localhost:3001/delete', {
+    //   method: 'DELETE',
+    //;
+  };
+
   render() {
     const { products : { products } } = this.props;
 
@@ -24,10 +43,14 @@ class Admin extends Component {
             () => <ChangeProduct products={products} />
           }
         />
-        <Route path="/admin/add" component={AddProduct} />
+        <Route path="/admin/add"
+          render={
+            () => <AddProduct onSubmit={this.submit} />
+          }
+        />
         <Route path="/admin/delete"
           render={
-            () => <DeleteProduct products={products} />
+            () => <DeleteProduct onSubmit={this.deleteSubmit} products={products} />
           }
         />
       </AdminContainer>
