@@ -6,7 +6,8 @@ import { AdminContainer } from '../style/AdminStyle/AdminPageStyle';
 import ChangeProduct from '../components/Admin/ChangeProduct';
 import AddProduct from '../components/Admin/AddProduct';
 import DeleteProduct from '../components/Admin/DeleteProduct';
-import * as actions from '../modules/Admin/adminActions';
+import * as productsActions from '../modules/Products/productsActions';
+import * as adminActions from '../modules/Admin/adminActions';
 
 class Admin extends Component {
   componentDidMount() {
@@ -14,8 +15,9 @@ class Admin extends Component {
     isAdmin(true);
   }
 
-  submit = (values) => {
-    console.log(values)
+  addProductsSubmit = (values) => {
+    const { fetchProducts } = this.props;
+
     fetch('http://localhost:3001/add', {
       method: 'POST',
       headers: {
@@ -24,13 +26,18 @@ class Admin extends Component {
       },
       body: JSON.stringify(values),
     })
+    .then(products => products.json())
+    .then(products => fetchProducts(products));
   };
 
-  deleteSubmit = (values) => {
-    console.log(values);
-    // fetch('http://localhost:3001/delete', {
-    //   method: 'DELETE',
-    //;
+  deleteProductsSubmit = (values) => {
+    const { fetchProducts } = this.props;
+
+    fetch(`http://localhost:3001/delete/${values}`, {
+      method: 'DELETE',
+    })
+    .then(products => products.json())
+    .then(products => fetchProducts(products));
   };
 
   render() {
@@ -45,12 +52,12 @@ class Admin extends Component {
         />
         <Route path="/admin/add"
           render={
-            () => <AddProduct onSubmit={this.submit} />
+            () => <AddProduct onSubmit={this.addProductsSubmit} />
           }
         />
         <Route path="/admin/delete"
           render={
-            () => <DeleteProduct onSubmit={this.deleteSubmit} products={products} />
+            () => <DeleteProduct onSubmit={this.deleteProductsSubmit} products={products} />
           }
         />
       </AdminContainer>
@@ -72,4 +79,7 @@ const mapStateToProps = state => {
   }
 };
 
-export default connect(mapStateToProps, { isAdmin: actions.isAdmin })(Admin);
+export default connect(mapStateToProps, {
+  isAdmin: adminActions.isAdmin,
+  fetchProducts: productsActions.fetchProducts,
+})(Admin);

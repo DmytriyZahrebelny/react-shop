@@ -1,32 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { array } from 'prop-types';
 import { ListProducts, ItemProduct, ProductName, ProductImg, ChangeProductInput } from '../../style/AdminStyle/ChangeProductStyle';
 import ChangeProductForm from './ChangeProductForm';
+import * as actions from '../../modules/Products/productsActions';
 
-const ChangeProduct = ({ products }) => {
-  return (
-    <div>
-      <ListProducts>
-        {
-          products.map((product) => {
-            return (
-              <ItemProduct key={product.id}>
-                <ProductImg src={product.image} alt='img' />
-                <ProductName>{product.title}</ProductName>
-                <ChangeProductInput to={`/admin/change/${product.id}`}>Change Product</ChangeProductInput>
-              </ItemProduct>
-            );
-          })
-        }
-      </ListProducts>
-      <Route path={`/admin/change/:id`} component={ChangeProductForm} />
-    </div>
-  )
+class ChangeProduct extends Component {
+  changeProductsSubmit = (values) => {
+    // const { fetchProducts } = this.props;
+  
+    fetch(`http://localhost:3001/change/${values}`, {
+      method: 'PATCH',
+      body: JSON.stringify(values),
+    })
+    // .then(products => products.json())
+    // .then(products => fetchProducts(products));
+  }
+
+  render() {
+    const { products } = this.props;
+
+    return (
+      <div>
+        <ListProducts>
+          {
+            products.map((product) => {
+              return (
+                <ItemProduct key={product.id}>
+                  <ProductImg src={product.image} alt='img' />
+                  <ProductName>{product.title}</ProductName>
+                  <ChangeProductInput to={`/admin/change/${product.id}`}>Change Product</ChangeProductInput>
+                </ItemProduct>
+              );
+            })
+          }
+        </ListProducts>
+        <Route path={`/admin/change/:id`}
+          render={
+            () => <ChangeProductForm onSubmit={this.changeProductsSubmit} />
+          } />
+      </div>
+    )
+  }
 }
 
 ChangeProduct.propTypes = {
   products: array.isRequired,
 };
 
-export default ChangeProduct;
+export default connect(null, {
+  fetchProducts: actions.fetchProducts,
+})(ChangeProduct);

@@ -15,7 +15,7 @@ const DeleteProducts = ({ products, handleSubmit, onSubmit }) => {
                 <ProductImg src={product.image} alt='img' />
                 <ProductName>{product.title}</ProductName>
                 <DeleteElement type="submit"
-                  onClick={handleSubmit(values => onSubmit({id: product.id}))
+                  onClick={handleSubmit(() => onSubmit(product.id))
                 }>Delete Element</DeleteElement>
               </ItemProduct>
             );
