@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import ErrorField from './ErrorField';
 
 class ChangeProductForm extends Component {
+  componentDidMount() {
+    const { match, getProductId } = this.props;
+
+    getProductId(match.params.id);
+  }
+
   render () {
-    const {handleSubmit} = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <div>
@@ -46,6 +53,6 @@ class ChangeProductForm extends Component {
   }
 }
 
-export default reduxForm({
+export default withRouter(reduxForm({
   form: 'change',
-})(ChangeProductForm);
+})(ChangeProductForm));

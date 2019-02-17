@@ -7,15 +7,33 @@ import ChangeProductForm from './ChangeProductForm';
 import * as actions from '../../modules/Products/productsActions';
 
 class ChangeProduct extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      id: null,
+    }
+  }
+
   changeProductsSubmit = (values) => {
-    // const { fetchProducts } = this.props;
-  
-    fetch(`http://localhost:3001/change/${values}`, {
+    const { fetchProducts } = this.props;
+
+    fetch('http://localhost:3001/change', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
       method: 'PATCH',
-      body: JSON.stringify(values),
+      body: JSON.stringify(Object.assign(values, this.state)),
     })
-    // .then(products => products.json())
-    // .then(products => fetchProducts(products));
+    .then(products => products.json())
+    .then(products => fetchProducts(products));
+  }
+
+  getProductId = (id) => {
+    this.setState({
+      id,
+    })
   }
 
   render() {
@@ -38,7 +56,7 @@ class ChangeProduct extends Component {
         </ListProducts>
         <Route path={`/admin/change/:id`}
           render={
-            () => <ChangeProductForm onSubmit={this.changeProductsSubmit} />
+            () => <ChangeProductForm getProductId={this.getProductId} onSubmit={this.changeProductsSubmit} />
           } />
       </div>
     )

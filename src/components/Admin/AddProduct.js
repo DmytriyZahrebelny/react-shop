@@ -4,7 +4,7 @@ import ErrorField from './ErrorField';
 
 class AddProduct extends Component {
   render () {
-    const {handleSubmit} = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <div>
