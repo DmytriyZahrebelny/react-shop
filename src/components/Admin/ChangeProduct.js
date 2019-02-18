@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { array } from 'prop-types';
 import { ListProducts, ItemProduct, ProductName, ProductImg, ChangeProductInput } from '../../style/AdminStyle/ChangeProductStyle';
 import ChangeProductForm from './ChangeProductForm';
-import * as actions from '../../modules/Products/productsActions';
+import * as adminOperations from '../../modules/Admin/adminOperations';
 
 class ChangeProduct extends Component {
   constructor(props) {
@@ -16,18 +16,9 @@ class ChangeProduct extends Component {
   }
 
   changeProductsSubmit = (values) => {
-    const { fetchProducts } = this.props;
+    const { fetchPatchProducts } = this.props;
 
-    fetch('http://localhost:3001/change', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      method: 'PATCH',
-      body: JSON.stringify(Object.assign(values, this.state)),
-    })
-    .then(products => products.json())
-    .then(products => fetchProducts(products));
+    fetchPatchProducts(values, this.state)
   }
 
   getProductId = (id) => {
@@ -68,5 +59,5 @@ ChangeProduct.propTypes = {
 };
 
 export default connect(null, {
-  fetchProducts: actions.fetchProducts,
+  fetchPatchProducts: adminOperations.fetchPatchProducts,
 })(ChangeProduct);

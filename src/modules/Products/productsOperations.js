@@ -1,9 +1,9 @@
 import * as productsActions from './productsActions';
 import * as Api from '../../api/Api';
 
-export const fetchProducts = () => async (dispatch) => {
+export const fetchGetProducts = () => async (dispatch) => {
   try {
-    const res = await Api.AdminProducts.fetchProducts();
+    const res = await Api.productsRequests.getProducts();
 
     dispatch(productsActions.fetchProducts(res));
   } catch(err) {

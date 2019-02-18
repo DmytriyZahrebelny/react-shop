@@ -10,7 +10,9 @@ import Loadding from './components/Shop/Loadding';
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchProducts();
+    const { fetchGetProducts } = this.props;
+
+    fetchGetProducts();
   }
 
   render() {
@@ -32,5 +34,5 @@ class App extends Component {
 const mapStateToProps = state => state.productsReducer;
 
 export default withRouter(connect(mapStateToProps, {
-  fetchProducts: productsOperations.fetchProducts,
+  fetchGetProducts: productsOperations.fetchGetProducts,
 })(App));

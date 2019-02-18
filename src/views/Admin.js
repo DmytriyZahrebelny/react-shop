@@ -6,8 +6,8 @@ import { AdminContainer } from '../style/AdminStyle/AdminPageStyle';
 import ChangeProduct from '../components/Admin/ChangeProduct';
 import AddProduct from '../components/Admin/AddProduct';
 import DeleteProduct from '../components/Admin/DeleteProduct';
-import * as productsActions from '../modules/Products/productsActions';
-import * as adminActions from '../modules/Admin/adminActions';
+import * as adminOperation from '../modules/Admin/adminOperations';
+import * as actions from '../modules/Admin/adminActions';
 
 class Admin extends Component {
   componentDidMount() {
@@ -16,28 +16,15 @@ class Admin extends Component {
   }
 
   addProductsSubmit = (values) => {
-    const { fetchProducts } = this.props;
+    const { fetchPostProducts } = this.props;
 
-    fetch('http://localhost:3001/add', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    })
-    .then(products => products.json())
-    .then(products => fetchProducts(products));
+    fetchPostProducts(values)
   };
 
   deleteProductsSubmit = (values) => {
-    const { fetchProducts } = this.props;
+    const { fetchDeleteProducts } = this.props;
 
-    fetch(`http://localhost:3001/delete/${values}`, {
-      method: 'DELETE',
-    })
-    .then(products => products.json())
-    .then(products => fetchProducts(products));
+    fetchDeleteProducts(values);
   };
 
   render() {
@@ -80,6 +67,7 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-  isAdmin: adminActions.isAdmin,
-  fetchProducts: productsActions.fetchProducts,
+  isAdmin: actions.isAdmin,
+  fetchDeleteProducts: adminOperation.fetchDeleteProducts,
+  fetchPostProducts: adminOperation.fetchPostProducts,
 })(Admin);
