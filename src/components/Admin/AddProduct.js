@@ -1,32 +1,31 @@
 import React, { Component } from 'react';
-import {Field, reduxForm} from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
+import { FormContainer, Button, Label, SwitchContainer } from '../../style/AdminStyle/AddProductStyle';
+import TexteriaField from './TexteriaField';
 import ErrorField from './ErrorField';
+import RadioInput from './RadioInput';
 
 class AddProduct extends Component {
   render () {
     const { handleSubmit } = this.props;
 
     return (
-      <div>
+      <FormContainer>
         <form onSubmit={handleSubmit}>
           <Field
             name="title"
             component={ErrorField}
             type="text"
-            placeholder="Title"
+            placeholder="Product title"
           />
-          <Field
-            name="type"
-            component={ErrorField}
-            type="text"
-            placeholder="Product type"
-          />
-          <Field
-            name="description"
-            component={ErrorField}
-            type="text"
-            placeholder="Description"
-          />
+          <SwitchContainer>
+            <Label htmlFor="mobile">Mobile</Label>
+            <Field id="mobile" name="type" component={RadioInput} type="radio" value="mobile" checked={true} />
+            <Label htmlFor="tablet">Tablet</Label>
+            <Field id="tablet" name="type" component={RadioInput} type="radio" value="tablet" />
+            <Label htmlFor="desktop">Desktop</Label>
+            <Field id="desktop" name="type" component={RadioInput} type="radio" value="desktop" />
+          </SwitchContainer>
           <Field
             name="image"
             component={ErrorField}
@@ -39,9 +38,14 @@ class AddProduct extends Component {
             type="text"
             placeholder="Price"
           />
-          <button type="submit">Submit</button>
+          <Field
+            name="description"
+            component={TexteriaField}
+            placeholder="Product description"
+          />
+          <Button type="submit">Submit</Button>
         </form>
-      </div>
+      </FormContainer>
     );
   }
 }
