@@ -13,14 +13,14 @@ const deleteRequestsProducts = (url) => {
   }).then(products => products.json());
 };
 
-const postRequestsProducts = (url, values) => {
+const postRequestsProducts = (url, values, radioButtonValue) => {
   return fetch(url, {
     method: 'POST',
     headers: {
       'Accept': 'application/json, text/plain, */*',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(values),
+    body: JSON.stringify(Object.assign(values, radioButtonValue)),
   })
   .then(products => products.json());
 };
@@ -44,8 +44,8 @@ export const productsRequests = {
   deleteProduct(values) {
     return deleteRequestsProducts(`https://shop-koa-api.herokuapp.com/api/v1/delete/${values}`)
   },
-  addProducts(values) {
-    return postRequestsProducts('https://shop-koa-api.herokuapp.com/api/v1/add', values)
+  addProducts(values, radioButtonValue) {
+    return postRequestsProducts('https://shop-koa-api.herokuapp.com/api/v1/add', values, radioButtonValue)
   },
   changeProducts(values, id) {
     return patchRequestsProducts('https://shop-koa-api.herokuapp.com/api/v1/change', values, id)

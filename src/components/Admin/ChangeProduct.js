@@ -7,12 +7,8 @@ import ChangeProductForm from './ChangeProductForm';
 import * as adminOperations from '../../modules/Admin/adminOperations';
 
 class ChangeProduct extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      id: null,
-    }
+  state = {
+    id: null,
   }
 
   changeProductsSubmit = (values) => {

@@ -6,9 +6,13 @@ export const FormContainer = styled.div`
 `;
 
 export const DescriptionsField = styled.textarea`
-  width: 562px;
-  height: 80px;
+  width: 100%;
+  height: 124px;
+  padding: 8px 10px;
   font-size: 18px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-sizing: border-box;
 `;
 
 export const FieldText = styled.input`
@@ -24,18 +28,25 @@ export const FieldText = styled.input`
 export const Button = styled.button`
   display: block;
   width: 200px;
-  margin: 10px auto 0;
+  margin: 30px auto 0;
   padding: 12px;
   font-size: 18px;
-  color: #FF8F33;
+  color: #FB4128;
   background-color: #ffffff;
-  border: 2px solid #FF8F33;
+  border: 2px solid #FB4128;
   border-radius: 25px;
+
+  :hover {
+    color: #ffffff;
+    background-color: #FF5122;
+  }
 `;
 
 export const Label = styled.label`
+  display: block;
   position: relative;
   font-size: 18px;
+  padding: 10px 55px 8px 0;
 `;
 
 export const SwitchContainer = styled.div`
@@ -46,31 +57,31 @@ export const SwitchContainer = styled.div`
 `;
 
 export const InputRadio = styled.input`
-  position: relative;
-  /* width: 0;
+ position: relative;
+  width: 0;
   height: 0;
 
   &:after {
     position: absolute;
     content: "";
-    left: -27px;
-    top: -25px;
+    left: -63px;
+    top: -4px;
     width: 35px;
     height: 35px;
     background-color: #fff;
-    border: 2px solid #e5e5e5;
+    border: 2px solid ${props => props.checked ? '#FF5122' : '#e5e5e5'};;
     border-radius: 50%;
   }
 
-  :checked + &:before {
+  &:before {
     position: absolute;
     content: "";
-    left: 12px;
-    top: 7px;
+    left: -51px;
+    top: 8px;
     z-index: 2;
     width: 15px;
     height: 15px;
-    background-color: red;
+    background-color: ${props => props.checked ? '#FF5122' : '#ffffff'};
     border-radius: 50%;
-  } */
+  }
 `;

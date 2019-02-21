@@ -6,7 +6,7 @@ const TexteriaField = ({ input, type, placeholder, meta : { error, touched } }) 
 
   return (
     <div>
-      <DescriptionsField type={type} placeholder={placeholder} />
+      <DescriptionsField {...input} type={type} placeholder={placeholder} />
       {errorText}
     </div>
   );

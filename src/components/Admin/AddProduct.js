@@ -6,12 +6,29 @@ import ErrorField from './ErrorField';
 import RadioInput from './RadioInput';
 
 class AddProduct extends Component {
+  state = {
+    activeButton: 'mobile',
+  };
+
+  componentDidMount() {
+    const { getRadioButtonValue } = this.props;
+
+    getRadioButtonValue(this.state.activeButton);
+  }
+
+
+  isChecked = (evt) => {
+    this.setState({
+      activeButton: evt.target.value,
+    });
+  }
+
   render () {
     const { handleSubmit } = this.props;
 
     return (
       <FormContainer>
-        <form onSubmit={handleSubmit}>
+        <form id="data" onSubmit={handleSubmit} >
           <Field
             name="title"
             component={ErrorField}
@@ -20,11 +37,11 @@ class AddProduct extends Component {
           />
           <SwitchContainer>
             <Label htmlFor="mobile">Mobile</Label>
-            <Field id="mobile" name="type" component={RadioInput} type="radio" value="mobile" checked={true} />
+            <Field id="mobile" name="type" component={RadioInput} activeButton={this.state.activeButton} type="radio" value="mobile" onChange={this.isChecked}/>
             <Label htmlFor="tablet">Tablet</Label>
-            <Field id="tablet" name="type" component={RadioInput} type="radio" value="tablet" />
+            <Field id="tablet" name="type" component={RadioInput} activeButton={this.state.activeButton} type="radio" value="tablet" onChange={this.isChecked}/>
             <Label htmlFor="desktop">Desktop</Label>
-            <Field id="desktop" name="type" component={RadioInput} type="radio" value="desktop" />
+            <Field id="desktop" name="type" component={RadioInput} activeButton={this.state.activeButton} type="radio" value="desktop" onChange={this.isChecked}/>
           </SwitchContainer>
           <Field
             name="image"
@@ -53,34 +70,3 @@ class AddProduct extends Component {
 export default reduxForm({
   form: 'add',
 })(AddProduct);
-
-// import React from 'react';
-// import { FormContainer, DescriptionsField, Fieldset, FieldText, Input, Legend } from '../../style/AdminStyle/AddProductStyle';
-
-// const AddProduct = () => {
-//   return (
-//     <FormContainer>
-//       <form action="">
-//         <Fieldset>
-//           <Legend>Name product</Legend>
-//           <FieldText type="text" name="title" placeholder="Add title" required />
-//         </Fieldset>
-//         <Fieldset>
-//           <Legend>Description product</Legend>
-//           <DescriptionsField name="description" placeholder="Add description" required></DescriptionsField>
-//         </Fieldset>
-//         <Fieldset>
-//           <Legend>Price product</Legend>
-//           <FieldText type="number" name="price" placeholder="Add price" required />
-//         </Fieldset>
-//         <Fieldset>
-//           <Legend>Image url product</Legend>
-//           <FieldText type="text" name="url" placeholder="Add url" required />
-//         </Fieldset>
-//         <Input type="submit" />
-//       </form>
-//     </FormContainer>
-//   );
-// };
-
-// export default AddProduct;

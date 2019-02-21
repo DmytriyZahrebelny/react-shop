@@ -10,15 +10,25 @@ import * as adminOperation from '../modules/Admin/adminOperations';
 import * as actions from '../modules/Admin/adminActions';
 
 class Admin extends Component {
+  state = {
+    type: null,
+  }
+
   componentDidMount() {
     const { isAdmin } = this.props;
     isAdmin(true);
   }
 
+  getRadioButtonValue = (value) => {
+    this.setState({
+      type: value,
+    });
+  }
+
   addProductsSubmit = (values) => {
     const { fetchPostProducts } = this.props;
 
-    fetchPostProducts(values)
+    fetchPostProducts(values, this.state)
   };
 
   deleteProductsSubmit = (values) => {
@@ -39,7 +49,7 @@ class Admin extends Component {
         />
         <Route path="/admin/add"
           render={
-            () => <AddProduct onSubmit={this.addProductsSubmit} />
+            () => <AddProduct onSubmit={this.addProductsSubmit} getRadioButtonValue={this.getRadioButtonValue} />
           }
         />
         <Route path="/admin/delete"

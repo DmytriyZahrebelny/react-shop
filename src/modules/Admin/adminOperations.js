@@ -11,9 +11,9 @@ export const fetchDeleteProducts = (values) => async (dispatch) => {
   }
 }
 
-export const fetchPostProducts = (values) => async (dispatch) => {
+export const fetchPostProducts = (values, radioButtonValue) => async (dispatch) => {
   try {
-    const res = await Api.productsRequests.addProducts(values);
+    const res = await Api.productsRequests.addProducts(values, radioButtonValue);
 
     dispatch(productsActions.fetchProducts(res));
   } catch(err) {
