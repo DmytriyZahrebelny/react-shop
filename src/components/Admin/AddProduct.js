@@ -16,7 +16,6 @@ class AddProduct extends Component {
     getRadioButtonValue(this.state.activeButton);
   }
 
-
   isChecked = (evt) => {
     this.setState({
       activeButton: evt.target.value,
@@ -67,6 +66,21 @@ class AddProduct extends Component {
   }
 }
 
+const validate = ({ title, image, price, description }) => {
+  const errors = {};
+
+  if(!price) errors.price = 'Price is required';
+
+  if(!description) errors.description = 'Description is required';
+
+  if(!title) errors.title = 'Title is required';
+
+  if(!image) errors.image = 'Image url is required';
+
+  return errors;
+};
+
 export default reduxForm({
   form: 'add',
+  validate,
 })(AddProduct);

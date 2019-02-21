@@ -1,8 +1,8 @@
 import React from 'react';
-import { FieldText } from '../../style/AdminStyle/AddProductStyle';
+import { FieldText, ErrorText } from '../../style/AdminStyle/AddProductStyle';
 
 const ErrorField = ({ input, type, placeholder, meta : { error, touched } }) => {
-  const errorText = touched && error && <div>{error}</div>
+  const errorText = touched && error && <ErrorText>{error}</ErrorText>
 
   return (
     <div>

@@ -85,3 +85,17 @@ export const InputRadio = styled.input`
     border-radius: 50%;
   }
 `;
+
+export const ErrorText = styled.span`
+  display: block;
+  margin: -15px 0 15px 12px;
+  font-size: 18px;
+  color: red;
+`;
+
+export const ErrorDescriptionsText = styled.span`
+  display: block;
+  margin: 15px 0 15px 12px;
+  font-size: 18px;
+  color: red;
+`;

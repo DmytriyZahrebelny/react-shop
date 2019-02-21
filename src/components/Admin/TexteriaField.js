@@ -1,8 +1,8 @@
 import React from 'react';
-import { DescriptionsField } from '../../style/AdminStyle/AddProductStyle';
+import { DescriptionsField, ErrorDescriptionsText } from '../../style/AdminStyle/AddProductStyle';
 
 const TexteriaField = ({ input, type, placeholder, meta : { error, touched } }) => {
-  const errorText = touched && error && <div>{error}</div>
+  const errorText = touched && error && <ErrorDescriptionsText>{error}</ErrorDescriptionsText>
 
   return (
     <div>
