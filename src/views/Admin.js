@@ -10,25 +10,15 @@ import * as adminOperation from '../modules/Admin/adminOperations';
 import * as actions from '../modules/Admin/adminActions';
 
 class Admin extends Component {
-  state = {
-    type: null,
-  }
-
   componentDidMount() {
     const { isAdmin } = this.props;
     isAdmin(true);
   }
 
-  getRadioButtonValue = (value) => {
-    this.setState({
-      type: value,
-    });
-  }
-
   addProductsSubmit = (values) => {
-    const { fetchPostProducts } = this.props;
+    const { fetchPostProducts, activeButton } = this.props;
 
-    fetchPostProducts(values, this.state)
+    fetchPostProducts(values, activeButton)
   };
 
   deleteProductsSubmit = (values) => {
@@ -73,6 +63,7 @@ const mapStateToProps = state => {
   return {
     products: state.productsReducer,
     router: state.router,
+    activeButton: state.adminReducer.activeButton,
   }
 };
 

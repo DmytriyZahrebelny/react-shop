@@ -20,9 +20,10 @@ class MobileProducts extends Component {
   render() {
     const { products, match } = this.props;
 
+    const currentProducts = products.filter(product => product.type === match.url.slice(1));
     return (
       <ProductsList>
-        {products.map((product) => (
+        {currentProducts.map((product) => (
           <ProductItem key={product.title}>
             <ProductLink match={match} product={product} />
             <Button onClick={this.getProductId} id={product.id}>Add to Cart</Button>

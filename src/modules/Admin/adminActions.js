@@ -1,22 +1,7 @@
 import * as constants from './adminConstants';
 
-export const addState = payload => ({
-  type: constants.ADD_STATE,
-  payload,
-});
-
-export const addProduct = payload => ({
-  type: constants.ADD_PRODUCT,
-  payload,
-});
-
-export const changeProduct = (payload) => ({
-  type: constants.DELETE_PRODUCT,
-  payload,
-});
-
-export const deleteProduct = payload => ({
-  type: constants.DELETE_PRODUCT,
+export const activeButton = payload => ({
+  type: constants.GET_RADIO_BUTTON_VALUE,
   payload,
 });
 

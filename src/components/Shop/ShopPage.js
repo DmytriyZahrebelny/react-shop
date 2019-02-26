@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { array, func } from 'prop-types';
 import * as actions from '../../modules/Cart/cartActions';
-import MobileProducts from './MobileProducts';
+import MobileProducts from './Products';
 import InfoProduct from './InfoProduct';
 
-const shopPage = ({ products, addProduct }) => (
+const shopPage = ({ products, addProduct, match }) => (
   <Switch>
-    <Route exact path="/mobile" render={() => <MobileProducts products={products} addProduct={addProduct} />} />
-    <Route path="/mobile/:id" render={() => <InfoProduct products={products} addProduct={addProduct} />} />
+    <Route exact path={`${match.path}`} render={() => <MobileProducts products={products} addProduct={addProduct} />} />
+    <Route path={`${match.path}/:id`} render={() => <InfoProduct products={products} addProduct={addProduct} />} />
   </Switch>
 );
 

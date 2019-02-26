@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
+import { connect } from 'react-redux';
+import { FormContainer, Button, Label, SwitchContainer } from '../../style/AdminStyle/AddProductStyle';
+import TexteriaField from './TexteriaField';
 import ErrorField from './ErrorField';
+import RadioInput from './RadioInput';
 
 class ChangeProductForm extends Component {
   componentDidMount() {
@@ -11,29 +15,28 @@ class ChangeProductForm extends Component {
   }
 
   render () {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, getActiveButton, getProducts, match } = this.props;
+
+    const [ currentProduct ] = getProducts.filter(product => product.id === match.params.id);
 
     return (
-      <div>
-        <form onSubmit={handleSubmit}>
+      <FormContainer>
+        <form id="data" onSubmit={handleSubmit} >
           <Field
             name="title"
             component={ErrorField}
             type="text"
-            placeholder="Title"
+            placeholder="Product title"
+            value={currentProduct.title}
           />
-          <Field
-            name="type"
-            component={ErrorField}
-            type="text"
-            placeholder="Product type"
-          />
-          <Field
-            name="description"
-            component={ErrorField}
-            type="text"
-            placeholder="Description"
-          />
+          <SwitchContainer>
+            <Label htmlFor="mobile">Mobile</Label>
+            <Field id="mobile" name="type" component={RadioInput} activeButton={getActiveButton} type="radio" value="mobile" onChange={this.isChecked}/>
+            <Label htmlFor="tablet">Tablet</Label>
+            <Field id="tablet" name="type" component={RadioInput} activeButton={getActiveButton} type="radio" value="tablet" onChange={this.isChecked}/>
+            <Label htmlFor="desktop">Desktop</Label>
+            <Field id="desktop" name="type" component={RadioInput} activeButton={getActiveButton} type="radio" value="desktop" onChange={this.isChecked}/>
+          </SwitchContainer>
           <Field
             name="image"
             component={ErrorField}
@@ -46,13 +49,25 @@ class ChangeProductForm extends Component {
             type="text"
             placeholder="Price"
           />
-          <button type="submit">Submit</button>
+          <Field
+            name="description"
+            component={TexteriaField}
+            placeholder="Product description"
+          />
+          <Button type="submit">Submit</Button>
         </form>
-      </div>
+      </FormContainer>
     );
   }
 }
 
-export default withRouter(reduxForm({
+const mapStateToProps = state => {
+  return {
+    getProducts: state.productsReducer.products,
+    getActiveButton: state.adminReducer.activeButton.type,
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(reduxForm({
   form: 'change',
-})(ChangeProductForm));
+})(ChangeProductForm)));

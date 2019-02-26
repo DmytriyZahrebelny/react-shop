@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const ProductsList = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  width: 1200px;
-  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 20px 30px;
+  width: 1160px;
+  padding: 0 20px;
   margin: 10px auto 0;
   list-style: none;
   background-color: #ffffff;
@@ -23,12 +23,12 @@ export const ProductItem = styled.li`
 
 export const ProductLink = styled(Link)`
   display: block;
-  width: 265px;
   padding: 20px 0;
   text-decoration: none;
 `;
 
 export const ProductName = styled.p`
+  min-height: 37px;
   margin: 0 auto;
   padding: 10px;
   text-align: center;

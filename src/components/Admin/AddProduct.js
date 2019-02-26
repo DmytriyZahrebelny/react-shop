@@ -1,29 +1,22 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 import { FormContainer, Button, Label, SwitchContainer } from '../../style/AdminStyle/AddProductStyle';
 import TexteriaField from './TexteriaField';
 import ErrorField from './ErrorField';
 import RadioInput from './RadioInput';
+import * as actions from '../../modules/Admin/adminActions';
 
 class AddProduct extends Component {
-  state = {
-    activeButton: 'mobile',
-  };
-
-  componentDidMount() {
-    const { getRadioButtonValue } = this.props;
-
-    getRadioButtonValue(this.state.activeButton);
-  }
-
   isChecked = (evt) => {
-    this.setState({
-      activeButton: evt.target.value,
-    });
-  }
+    const { activeButton } = this.props;
 
+    activeButton(evt.target.value);
+  }
+  
+  
   render () {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, getActiveButton } = this.props;
 
     return (
       <FormContainer>
@@ -36,11 +29,11 @@ class AddProduct extends Component {
           />
           <SwitchContainer>
             <Label htmlFor="mobile">Mobile</Label>
-            <Field id="mobile" name="type" component={RadioInput} activeButton={this.state.activeButton} type="radio" value="mobile" onChange={this.isChecked}/>
+            <Field id="mobile" name="type" component={RadioInput} activeButton={getActiveButton} type="radio" value="mobile" onChange={this.isChecked}/>
             <Label htmlFor="tablet">Tablet</Label>
-            <Field id="tablet" name="type" component={RadioInput} activeButton={this.state.activeButton} type="radio" value="tablet" onChange={this.isChecked}/>
+            <Field id="tablet" name="type" component={RadioInput} activeButton={getActiveButton} type="radio" value="tablet" onChange={this.isChecked}/>
             <Label htmlFor="desktop">Desktop</Label>
-            <Field id="desktop" name="type" component={RadioInput} activeButton={this.state.activeButton} type="radio" value="desktop" onChange={this.isChecked}/>
+            <Field id="desktop" name="type" component={RadioInput} activeButton={getActiveButton} type="radio" value="desktop" onChange={this.isChecked}/>
           </SwitchContainer>
           <Field
             name="image"
@@ -80,7 +73,15 @@ const validate = ({ title, image, price, description }) => {
   return errors;
 };
 
-export default reduxForm({
+const mapStateToProps = state => {
+  return {
+    getActiveButton: state.adminReducer.activeButton.type,
+  };
+};
+
+export default connect(mapStateToProps, {
+  activeButton: actions.activeButton,
+})(reduxForm({
   form: 'add',
   validate,
-})(AddProduct);
+})(AddProduct));
