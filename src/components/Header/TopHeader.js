@@ -33,43 +33,32 @@ export const TextField = styled.input`
 	border-radius: 40px;
 `;
 
-class TopHeader extends PureComponent {
-	constructor(props) {
-		super(props);
-
-		this.getWords = this.getWords.bind(this);
-	}
-
-	getWords(evt) {
+const TopHeader = ({ productsId = 0, searchProducts, location, history }) => {
+	const getWords = evt => {
 		evt.preventDefault();
-		const { searchProducts, location, history } = this.props;
 
 		if (location.pathname !== '/search') {
 			history.push('/search');
 			return searchProducts(evt.target.search.value);
 		}
 		searchProducts(evt.target.search.value);
-	}
+	};
 
-	render() {
-		const { productsId = 0 } = this.props;
-
-		return (
-			<TopHeaderNav>
-				<li>
-					<HeaderLink to='/'>Shop</HeaderLink>
-				</li>
-				<li>
-					<form action='' onSubmit={this.getWords}>
-						<TextField name='search' type='text' placeholder='Search' />
-					</form>
-				</li>
-				<li>
-					<HeaderLink to='/cart'>{`Cart ${productsId.length}`}</HeaderLink>
-				</li>
-			</TopHeaderNav>
-		);
-	}
-}
+	return (
+		<TopHeaderNav>
+			<li>
+				<HeaderLink to='/'>Shop</HeaderLink>
+			</li>
+			<li>
+				<form action='' onSubmit={getWords}>
+					<TextField name='search' type='text' placeholder='Search' />
+				</form>
+			</li>
+			<li>
+				<HeaderLink to='/cart'>{`Cart ${productsId.length}`}</HeaderLink>
+			</li>
+		</TopHeaderNav>
+	);
+};
 
 export default TopHeader;
