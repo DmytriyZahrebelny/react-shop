@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import HeaderMenu from './HeaderMenu';
 import TopHeader from './TopHeader';
+import HeaderMenu from './HeaderMenu';
 
 const HeaderContainer = styled.header`
 	background-color: #ff5122;

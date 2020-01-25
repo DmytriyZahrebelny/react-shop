@@ -1,12 +1,8 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const HeaderContainer = styled.header`
-	background-color: #ff5122;
-`;
-
-export const TopHeaderNav = styled.ul`
+const TopHeaderNav = styled.ul`
 	display: flex;
 	justify-content: space-between;
 	width: 1200px;
@@ -14,17 +10,17 @@ export const TopHeaderNav = styled.ul`
 	margin: 0 auto;
 	list-style: none;
 	border-bottom: 1px solid #ffffff;
+
+	a {
+		display: block;
+		padding: 20px 20px 0;
+		font-size: 22px;
+		text-decoration: none;
+		color: #ffffff;
+	}
 `;
 
-export const HeaderLink = styled(Link)`
-	display: block;
-	padding: 20px 20px 0;
-	font-size: 22px;
-	text-decoration: none;
-	color: #ffffff;
-`;
-
-export const TextField = styled.input`
+const TextField = styled.input`
 	width: 250px;
 	padding: 8px 0 8px 20px;
 	margin-top: 8px;
@@ -33,7 +29,7 @@ export const TextField = styled.input`
 	border-radius: 40px;
 `;
 
-const TopHeader = ({ productsId = 0, searchProducts, location, history }) => {
+const TopHeader = ({ productsId = 0, searchProducts, location = {}, history = {} }) => {
 	const getWords = evt => {
 		evt.preventDefault();
 
@@ -47,7 +43,7 @@ const TopHeader = ({ productsId = 0, searchProducts, location, history }) => {
 	return (
 		<TopHeaderNav>
 			<li>
-				<HeaderLink to='/'>Shop</HeaderLink>
+				<Link to='/'>Shop</Link>
 			</li>
 			<li>
 				<form action='' onSubmit={getWords}>
@@ -55,7 +51,7 @@ const TopHeader = ({ productsId = 0, searchProducts, location, history }) => {
 				</form>
 			</li>
 			<li>
-				<HeaderLink to='/cart'>{`Cart ${productsId.length}`}</HeaderLink>
+				<Link to='/cart'>{`Cart ${productsId.length}`}</Link>
 			</li>
 		</TopHeaderNav>
 	);
