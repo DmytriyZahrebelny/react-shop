@@ -1,16 +1,17 @@
 import React from 'react';
-import './App.css';
+import styled from 'styled-components';
+import Header from './components/Header/Header';
 
-function App() {
+const AppContainer = styled.div`
+	font-family: Arial, Helvetica, sans-serif;
+`;
+
+const App = () => {
 	return (
-		<div className='App'>
-			<header className='App-header'>
-				<a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-					Learn React
-				</a>
-			</header>
-		</div>
+		<AppContainer className='App'>
+			<Header />
+		</AppContainer>
 	);
-}
+};
 
 export default App;
