@@ -1,36 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-import * as productsOperations from './modules/Products/productsOperations';
-import { AppContainer } from './style/AppStyle/AppStyle';
-import Header from './components/Header/Header';
-import Shop from './views/Shop';
-import Loadding from './components/Shop/Loadding';
-
-class App extends Component {
-  componentDidMount() {
-    this.props.fetchProducts();
-  }
-
-  render() {
-    const { products } = this.props;
-
-    if (products.length === 0) {
-      return <Loadding />
-    }
-
-    return (
-      <AppContainer className="App">
-        <Header />
-        <Shop />
-      </AppContainer>
-    );
-  }
+function App() {
+	return (
+		<div className='App'>
+			<header className='App-header'>
+				<img src={logo} className='App-logo' alt='logo' />
+				<a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
+					Learn React
+				</a>
+			</header>
+		</div>
+	);
 }
 
-const mapStateToProps = state => state.productsReducer;
-
-export default withRouter(connect(mapStateToProps, {
-  fetchProducts: productsOperations.fetchProducts,
-})(App));
+export default App;
