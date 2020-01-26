@@ -1,36 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-
-import * as productsOperations from './modules/Products/productsOperations';
-import { AppContainer } from './style/AppStyle/AppStyle';
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from './components/Header/Header';
-import Shop from './views/Shop';
-import Loadding from './components/Shop/Loadding';
+import { fetchProducts } from './stores/Products/productsOperations';
 
-class App extends Component {
-  componentDidMount() {
-    this.props.fetchProducts();
-  }
+const AppContainer = styled.div`
+	font-family: Arial, Helvetica, sans-serif;
+`;
 
-  render() {
-    const { products } = this.props;
+const App = () => {
+	const dispatch = useDispatch();
+	const products = useSelector(state => state.productsReducer.products);
 
-    if (products.length === 0) {
-      return <Loadding />
-    }
+	useEffect(() => {
+		dispatch(fetchProducts());
+	}, [dispatch]);
 
-    return (
-      <AppContainer className="App">
-        <Header />
-        <Shop />
-      </AppContainer>
-    );
-  }
-}
+	return (
+		<AppContainer className='App'>
+			<Header />
+		</AppContainer>
+	);
+};
 
-const mapStateToProps = state => state.productsReducer;
-
-export default withRouter(connect(mapStateToProps, {
-  fetchProducts: productsOperations.fetchProducts,
-})(App));
+export default App;
