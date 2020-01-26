@@ -1,18 +1,12 @@
-const getProducts = (url, body, params = {}) => {
-	const headers = {
-		'Content-type': 'application/json',
-	};
-
-	return fetch(`${url}`, {
+export const getProducts = async () => {
+	const response = await fetch('/api/v2/products', {
 		method: 'GET',
-		headers,
-		body: JSON.stringify(body),
-		...params,
-	}).then(res => res.json());
-};
+		headers: {
+			'Content-type': 'application/json',
+		},
+	});
 
-export const AdminProducts = {
-	fetchProducts() {
-		return getProducts('/api/v2/products');
-	},
+	const data = await response.json();
+
+	return data;
 };

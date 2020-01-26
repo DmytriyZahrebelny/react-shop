@@ -1,36 +1,26 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from './components/Header/Header';
-import * as productsOperations from './stores/Products/productsOperations';
+import { fetchProducts } from './stores/Products/productsOperations';
 
 const AppContainer = styled.div`
 	font-family: Arial, Helvetica, sans-serif;
 `;
 
-class App extends Component {
-	componentDidMount() {
-		const { fetchProducts } = this.props;
-		fetchProducts();
-	}
+const App = () => {
+	const dispatch = useDispatch();
+	const products = useSelector(state => state.productsReducer.products);
 
-	render() {
-		const { products } = this.props;
-		console.log(products);
-		if (products.length === 0) {
-			return null;
-		}
+	useEffect(() => {
+		dispatch(fetchProducts());
+	}, [dispatch]);
 
-		return (
-			<AppContainer className='App'>
-				<Header />
-			</AppContainer>
-		);
-	}
-}
+	return (
+		<AppContainer className='App'>
+			<Header />
+		</AppContainer>
+	);
+};
 
-const mapStateToProps = state => state.productsReducer;
-
-export default connect(mapStateToProps, {
-	fetchProducts: productsOperations.fetchProducts,
-})(App);
+export default App;

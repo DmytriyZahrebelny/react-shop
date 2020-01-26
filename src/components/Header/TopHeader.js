@@ -37,6 +37,7 @@ const TopHeader = ({ productsId = 0, searchProducts, location = {}, history = {}
 			history.push('/search');
 			return searchProducts(evt.target.search.value);
 		}
+
 		searchProducts(evt.target.search.value);
 	};
 
