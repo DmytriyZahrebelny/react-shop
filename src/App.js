@@ -1,16 +1,26 @@
-import React from 'react';
-import './App.css';
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import Header from './components/Header/Header';
+import { fetchProducts } from './stores/Products/productsOperations';
 
-function App() {
+const AppContainer = styled.div`
+	font-family: Arial, Helvetica, sans-serif;
+`;
+
+const App = () => {
+	const dispatch = useDispatch();
+	const products = useSelector(state => state.productsReducer.products);
+
+	useEffect(() => {
+		dispatch(fetchProducts());
+	}, [dispatch]);
+
 	return (
-		<div className='App'>
-			<header className='App-header'>
-				<a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-					Learn React
-				</a>
-			</header>
-		</div>
+		<AppContainer className='App'>
+			<Header />
+		</AppContainer>
 	);
-}
+};
 
 export default App;
