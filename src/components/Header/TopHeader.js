@@ -1,6 +1,8 @@
 import React from 'react';
+import { useHistory, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { searchProducts } from '../../stores/Header/headerActions';
 
 const TopHeaderNav = styled.ul`
 	display: flex;
@@ -29,16 +31,19 @@ const TextField = styled.input`
 	border-radius: 40px;
 `;
 
-const TopHeader = ({ productsId = 0, searchProducts, location = {}, history = {} }) => {
+const TopHeader = ({ productsId = 0 }) => {
+	const dispatch = useDispatch();
+	const history = useHistory();
+
 	const getWords = evt => {
 		evt.preventDefault();
 
-		if (location.pathname !== '/search') {
+		if (history.location.pathname !== '/search') {
 			history.push('/search');
-			return searchProducts(evt.target.search.value);
+			return dispatch(searchProducts(evt.target.search.value));
 		}
 
-		searchProducts(evt.target.search.value);
+		return dispatch(searchProducts(evt.target.search.value));
 	};
 
 	return (
