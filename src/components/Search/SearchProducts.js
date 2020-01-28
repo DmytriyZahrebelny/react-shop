@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import ProductLink from '../Shop/ProductLink';
 import { searchProductsSelector } from '../../stores/Header/slector';
@@ -45,21 +46,19 @@ export const Button = styled.p`
 
 const SearchProducts = () => {
 	const searchProducts = useSelector(state => searchProductsSelector(state));
-	console.log(searchProducts);
-	// return (
-	// 	<ProductsList>
-	// 		{searchProduct.map(product => (
-	// 			<ProductItem key={product.title}>
-	// 				<ProductLink match={match} product={product} />
-	// 				<Button onClick={getProductId} id={product.id}>
-	// 					Add to Cart
-	// 				</Button>
-	// 			</ProductItem>
-	// 		))}
-	// 	</ProductsList>
-	// );
-
-	return <div>test</div>;
+	const history = useHistory();
+	console.log(history);
+	return (
+		<ProductsList>
+			{searchProducts.map(product => (
+				<ProductItem key={product.title}>
+					<ProductLink match={history.location} product={product} />
+					{/* <Button onClick={getProductId} id={product.id}> */}
+					<Button id={product.id}>Add to Cart</Button>
+				</ProductItem>
+			))}
+		</ProductsList>
+	);
 };
 
 export default SearchProducts;

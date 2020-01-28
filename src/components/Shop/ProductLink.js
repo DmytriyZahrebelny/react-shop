@@ -21,9 +21,9 @@ const ProductImg = styled.img`
 	height: 265px;
 `;
 
-const ProductLink = ({ match, product }) => {
+const ProductLink = ({ path, product }) => {
 	return (
-		<LinkProduct to={`${match.url}/${product.id}`}>
+		<LinkProduct to={`${path}/${product.id}`}>
 			<ProductImg src={product.image} alt={product.id} />
 			<ProductName>{product.title}</ProductName>
 		</LinkProduct>
