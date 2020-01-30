@@ -1,7 +1,9 @@
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import ProductLink from './ProductLink';
+import * as actions from '../../stores/Cart/cartActions';
 
 const ProductsList = styled.ul`
 	display: flex;
@@ -42,15 +44,16 @@ const Button = styled.p`
 	}
 `;
 
-const MobileProducts = ({ products: { products }, addProduct }) => {
+const MobileProducts = ({ products: { products } }) => {
 	const match = useRouteMatch();
+	const dispatch = useDispatch();
 
 	return (
 		<ProductsList>
 			{products.map(product => (
 				<ProductItem key={product.title}>
 					<ProductLink match={match} product={product} />
-					<Button onClick={addProduct} id={product.id}>
+					<Button onClick={() => dispatch(actions.addProduct(product.id))} id={product.id}>
 						Add to Cart
 					</Button>
 				</ProductItem>
