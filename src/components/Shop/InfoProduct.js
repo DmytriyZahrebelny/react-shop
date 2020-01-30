@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Product = styled.div`
@@ -55,11 +55,10 @@ export const ProductImg = styled.img`
 	margin: 20px 45px 0;
 `;
 
-const infoProduct = ({ products, addProduct, match }) => {
-	const currentProduct = products.filter(product => {
-		return product.id === match.params.id;
-	});
+const InfoProduct = ({ products: { products }, addProduct }) => {
+	const match = useRouteMatch();
 
+	const currentProduct = products.filter(product => product.id === match.params.id);
 	const [product] = currentProduct;
 
 	function getProductId(evt) {
@@ -83,4 +82,4 @@ const infoProduct = ({ products, addProduct, match }) => {
 	);
 };
 
-export default withRouter(infoProduct);
+export default InfoProduct;
