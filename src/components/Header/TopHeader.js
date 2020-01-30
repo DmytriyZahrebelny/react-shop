@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { searchProducts } from '../../stores/Header/headerActions';
 
@@ -31,7 +31,8 @@ const TextField = styled.input`
 	border-radius: 40px;
 `;
 
-const TopHeader = ({ productsId = 0 }) => {
+const TopHeader = () => {
+	const productsNumber = useSelector(state => state.cartReducer.productsId);
 	const dispatch = useDispatch();
 	const history = useHistory();
 
@@ -57,7 +58,7 @@ const TopHeader = ({ productsId = 0 }) => {
 				</form>
 			</li>
 			<li>
-				<Link to='/cart'>{`Cart ${productsId.length}`}</Link>
+				<Link to='/cart'>{`Cart ${productsNumber.length}`}</Link>
 			</li>
 		</TopHeaderNav>
 	);
