@@ -1,44 +1,62 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { ProductsList, ProductItem, Button } from '../../style/ShopStyle/MobileProductsStyle';
-import { array, object, shape, func } from 'prop-types';
+import React from 'react';
+import { useRouteMatch } from 'react-router-dom';
+import styled from 'styled-components';
 import ProductLink from './ProductLink';
 
-class MobileProducts extends Component {
-  constructor(props) {
-    super(props)
+const ProductsList = styled.ul`
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	width: 1200px;
+	padding: 0;
+	margin: 10px auto 0;
+	list-style: none;
+	background-color: #ffffff;
+`;
 
-    this.getProductId = this.getProductId.bind(this);
-  }
+const ProductItem = styled.li`
+	margin: 20px 0;
+	padding-bottom: 20px;
 
-  getProductId(evt) {
-    const { addProduct } = this.props;
+	:hover {
+		box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.75);
+	}
+`;
 
-    addProduct(evt.target.id);
-  }
+const Button = styled.p`
+	display: block;
+	width: 200px;
+	padding: 10px;
+	margin: 0 auto;
+	padding: 10px;
+	font-size: 20px;
+	text-align: center;
+	color: #ff8f33;
+	border: 2px solid #fb4128;
+	border-radius: 24px;
+	cursor: pointer;
 
-  render() {
-    const { products, match } = this.props;
+	:hover {
+		background-color: #ff5122;
+		color: #ffffff;
+	}
+`;
 
-    return (
-      <ProductsList>
-        {products.map((product) => (
-          <ProductItem key={product.title}>
-            <ProductLink match={match} product={product} />
-            <Button onClick={this.getProductId} id={product.id}>Add to Cart</Button>
-          </ProductItem>)
-        )}
-      </ProductsList>
-    );
-  }
-}
+const MobileProducts = ({ products: { products }, addProduct }) => {
+	const match = useRouteMatch();
 
-MobileProducts.propTypes = {
-  products: array.isRequired,
-  addProduct: func.isRequired,
-  url: shape({
-    match: object.isRequired,
-  }),
+	return (
+		<ProductsList>
+			{products.map(product => (
+				<ProductItem key={product.title}>
+					<ProductLink match={match} product={product} />
+					<Button onClick={addProduct} id={product.id}>
+						Add to Cart
+					</Button>
+				</ProductItem>
+			))}
+		</ProductsList>
+	);
 };
 
-export default withRouter(MobileProducts);
+export default MobileProducts;
