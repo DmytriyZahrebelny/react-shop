@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import Products from './Product';
-import Sidebar from './Sidebar';
+import Products from './Products/Product';
+import Sidebar from './Sidebar/Sidebar';
+import { useCartHooks } from './useCartHooks';
 
 const CartContainer = styled.div`
 	display: flex;
@@ -20,22 +21,7 @@ const ListProducts = styled.ul`
 `;
 
 const Cart = () => {
-	const { products, selectedProduct } = useSelector(state => ({
-		products: state.productsReducer,
-		selectedProduct: state.cartReducer,
-	}));
-
-	const quantityProducts = selectedProduct.productsId.reduce((acc, id) => {
-		acc[id] = acc[id] ? acc[id] + 1 : 1;
-		return acc;
-	}, {});
-
-	const allPrice = products.products.reduce((sum, product) => {
-		if (quantityProducts[product.id]) {
-			return sum + quantityProducts[product.id] * product.price;
-		}
-		return sum;
-	}, 0);
+	const { quantityProducts, allPrice, products } = useCartHooks();
 
 	return (
 		<form onSubmit={evt => evt.preventDefault()} action='#'>
