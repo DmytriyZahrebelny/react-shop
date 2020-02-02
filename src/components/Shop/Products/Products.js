@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import ProductLink from '../ProductLink';
+import ProductLink from '../../components/ProductLink';
 import * as actions from '../../../stores/Cart/cartActions';
 
 const ProductsList = styled.ul`
@@ -44,10 +44,22 @@ const Button = styled.p`
 	}
 `;
 
+export const Loadding = styled.h1`
+	width: 1200px;
+	margin: 10px auto 0;
+	min-height: 800px;
+	padding: 40px;
+	margin: 0;
+`;
+
 const Products = ({ products }) => {
 	const match = useRouteMatch();
 	const dispatch = useDispatch();
 	const typeProducts = match.path.slice(1);
+
+	if (!products.length) {
+		return <Loadding>Loadding...</Loadding>;
+	}
 
 	return (
 		<ProductsList>

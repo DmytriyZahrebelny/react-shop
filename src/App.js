@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Cart from './components/Cart/Cart';
@@ -15,7 +15,6 @@ const AppContainer = styled.div`
 
 const App = () => {
 	const dispatch = useDispatch();
-	const products = useSelector(state => state.productsStore);
 
 	useEffect(() => {
 		dispatch(fetchProducts());
