@@ -1,6 +1,8 @@
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import * as actions from '../../stores/Cart/cartActions';
 
 export const Product = styled.div`
 	display: flex;
@@ -55,14 +57,15 @@ export const ProductImg = styled.img`
 	margin: 20px 45px 0;
 `;
 
-const InfoProduct = ({ products, addProduct }) => {
+const InfoProduct = ({ products }) => {
 	const match = useRouteMatch();
+	const dispatch = useDispatch();
 	const currentProduct = products.filter(product => product.id === match.params.id);
 	const [product] = currentProduct;
 
-	function getProductId(evt) {
-		addProduct(evt.target.id);
-	}
+	const getProductId = evt => {
+		dispatch(actions.addProduct(evt.target.id));
+	};
 
 	return (
 		<Product>

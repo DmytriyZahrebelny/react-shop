@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import ProductLink from '../Shop/ProductLink';
+import ProductLink from '../components/ProductLink';
 import { searchProductsSelector } from '../../stores/Header/slector';
 
 export const ProductsList = styled.ul`

@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 // import * as actions from '../../modules/Cart/cartActions';
 import SearchProducts from './SearchProducts';
-// import InfoProduct from '../Shop/InfoProduct';
+// import InfoProduct from '../components/InfoProduct';
 
 const SearchPage = () => {
 	return (
