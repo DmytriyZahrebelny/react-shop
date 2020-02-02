@@ -46,7 +46,6 @@ const Button = styled.p`
 
 export const Loadding = styled.h1`
 	width: 1200px;
-	margin: 10px auto 0;
 	min-height: 800px;
 	padding: 40px;
 	margin: 0;
