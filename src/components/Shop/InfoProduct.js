@@ -55,9 +55,8 @@ export const ProductImg = styled.img`
 	margin: 20px 45px 0;
 `;
 
-const InfoProduct = ({ products: { products }, addProduct }) => {
+const InfoProduct = ({ products, addProduct }) => {
 	const match = useRouteMatch();
-
 	const currentProduct = products.filter(product => product.id === match.params.id);
 	const [product] = currentProduct;
 

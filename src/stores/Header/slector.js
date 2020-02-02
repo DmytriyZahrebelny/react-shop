@@ -7,6 +7,6 @@ const isSearched = searchTerm => {
 };
 
 export const searchProductsSelector = createSelector(
-	[state => state.productsReducer.products, state => state.headerReducer.searchProductsWords],
+	[state => state.productsStore, state => state.headerStore.searchProductsWords],
 	(products, searchProductsWords) => products.filter(isSearched(searchProductsWords))
 );

@@ -47,7 +47,7 @@ export const Button = styled.p`
 const SearchProducts = () => {
 	const searchProducts = useSelector(state => searchProductsSelector(state));
 	const history = useHistory();
-	console.log(history);
+
 	return (
 		<ProductsList>
 			{searchProducts.map(product => (

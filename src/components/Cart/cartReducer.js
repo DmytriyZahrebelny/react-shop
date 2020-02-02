@@ -8,7 +8,7 @@ export const initialState = {
 	allPrice: 0,
 };
 
-export const cartReducer = (state = initialState, action) => {
+export const cartStore = (state = initialState, action) => {
 	switch (action.type) {
 		case cartConstatns.QUANTITY_PRODUCTS:
 			return action;
