@@ -2,8 +2,8 @@ import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import ProductLink from './ProductLink';
-import * as actions from '../../stores/Cart/cartActions';
+import ProductLink from '../ProductLink';
+import * as actions from '../../../stores/Cart/cartActions';
 
 const ProductsList = styled.ul`
 	display: flex;
@@ -44,22 +44,25 @@ const Button = styled.p`
 	}
 `;
 
-const MobileProducts = ({ products }) => {
+const Products = ({ products }) => {
 	const match = useRouteMatch();
 	const dispatch = useDispatch();
+	const typeProducts = match.path.slice(1);
 
 	return (
 		<ProductsList>
-			{products.map(product => (
-				<ProductItem key={product.title}>
-					<ProductLink match={match} product={product} />
-					<Button onClick={() => dispatch(actions.addProduct(product.id))} id={product.id}>
-						Add to Cart
-					</Button>
-				</ProductItem>
-			))}
+			{products
+				.filter(product => product.type === typeProducts)
+				.map(product => (
+					<ProductItem key={product.title}>
+						<ProductLink match={match} product={product} />
+						<Button onClick={() => dispatch(actions.addProduct(product.id))} id={product.id}>
+							Add to Cart
+						</Button>
+					</ProductItem>
+				))}
 		</ProductsList>
 	);
 };
 
-export default MobileProducts;
+export default Products;

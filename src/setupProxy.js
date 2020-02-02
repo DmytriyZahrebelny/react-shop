@@ -4,7 +4,7 @@ module.exports = function(app) {
 	app.use(
 		'/api',
 		proxy({
-			target: 'https://apiko-api.herokuapp.com',
+			target: 'https://shop-koa-api.herokuapp.com/',
 			changeOrigin: true,
 		})
 	);
