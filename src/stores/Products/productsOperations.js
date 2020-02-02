@@ -1,5 +1,5 @@
 import * as productsActions from './productsActions';
-import * as Api from '../../api/Api';
+import * as Api from '../../components/Products/productsApi';
 
 export const fetchProducts = () => async dispatch => {
 	try {

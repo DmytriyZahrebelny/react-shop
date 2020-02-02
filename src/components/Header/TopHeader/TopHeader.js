@@ -1,8 +1,7 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { searchProducts } from '../../../stores/Header/headerActions';
+import { useHeaderHooks } from '../useHeaderHooks';
 
 const TopHeaderNav = styled.div`
 	display: flex;
@@ -32,20 +31,7 @@ const TextField = styled.input`
 `;
 
 const TopHeader = () => {
-	const productsNumber = useSelector(state => state.cartStore.productsId);
-	const dispatch = useDispatch();
-	const history = useHistory();
-
-	const getWords = evt => {
-		evt.preventDefault();
-
-		if (history.location.pathname !== '/search') {
-			history.push('/search');
-			return dispatch(searchProducts(evt.target.search.value));
-		}
-
-		return dispatch(searchProducts(evt.target.search.value));
-	};
+	const { getWords, productsNumber } = useHeaderHooks();
 
 	return (
 		<TopHeaderNav>
