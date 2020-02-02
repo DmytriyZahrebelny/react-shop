@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const AdminMenuContainer = styled.div`
-	width: 500px;
+	display: flex;
+	width: 555px;
 
 	a {
 		display: inline-block;
@@ -14,7 +15,7 @@ export const AdminMenuContainer = styled.div`
 	}
 `;
 
-const AdminMenu = ({ isAdmin = true }) => {
+const AdminMenu = ({ isAdmin = false }) => {
 	if (isAdmin) {
 		return (
 			<AdminMenuContainer>

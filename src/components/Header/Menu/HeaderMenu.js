@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import ProductsMenu from './ProductsMenu';
+import AdminMenu from './AdminMenu';
 
 const Menu = styled.div`
 	display: flex;
@@ -8,6 +10,7 @@ const Menu = styled.div`
 	flex-wrap: wrap;
 	width: 1200px;
 	margin: 0 auto;
+	padding-bottom: 10px;
 
 	a {
 		display: block;
@@ -24,6 +27,8 @@ const Menu = styled.div`
 
 const HeaderMenu = () => (
 	<Menu>
+		<ProductsMenu />
+		<AdminMenu />
 		<Link to='/auth'>Login</Link>
 	</Menu>
 );

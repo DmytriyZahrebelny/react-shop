@@ -2,9 +2,9 @@ import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { searchProducts } from '../../stores/Header/headerActions';
+import { searchProducts } from '../../../stores/Header/headerActions';
 
-const TopHeaderNav = styled.ul`
+const TopHeaderNav = styled.div`
 	display: flex;
 	justify-content: space-between;
 	width: 1200px;
@@ -49,17 +49,11 @@ const TopHeader = () => {
 
 	return (
 		<TopHeaderNav>
-			<li>
-				<Link to='/'>Shop</Link>
-			</li>
-			<li>
-				<form action='' onSubmit={getWords}>
-					<TextField name='search' type='text' placeholder='Search' />
-				</form>
-			</li>
-			<li>
-				<Link to='/cart'>{`Cart ${productsNumber.length}`}</Link>
-			</li>
+			<Link to='/'>Shop</Link>
+			<form action='' onSubmit={getWords}>
+				<TextField name='search' type='text' placeholder='Search' />
+			</form>
+			<Link to='/cart'>{`Cart ${productsNumber.length}`}</Link>
 		</TopHeaderNav>
 	);
 };
