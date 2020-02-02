@@ -6,7 +6,7 @@ import MobileProducts from './MobileProducts';
 import InfoProduct from './InfoProduct';
 
 const ShopPage = () => {
-	const products = useSelector(state => state.productsReducer);
+	const products = useSelector(state => state.productsStore);
 	const addProduct = useDispatch(actions.addProduct());
 
 	return (

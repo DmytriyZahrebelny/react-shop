@@ -2,8 +2,8 @@ import { useSelector } from 'react-redux';
 
 export const useCartHooks = () => {
 	const { products, selectedProduct } = useSelector(state => ({
-		products: state.productsReducer,
-		selectedProduct: state.cartReducer,
+		products: state.productsStore,
+		selectedProduct: state.cartStore,
 	}));
 
 	const quantityProducts = selectedProduct.productsId.reduce((acc, id) => {
@@ -11,7 +11,7 @@ export const useCartHooks = () => {
 		return acc;
 	}, {});
 
-	const allPrice = products.products.reduce((sum, product) => {
+	const allPrice = products.reduce((sum, product) => {
 		if (quantityProducts[product.id]) {
 			return sum + quantityProducts[product.id] * product.price;
 		}

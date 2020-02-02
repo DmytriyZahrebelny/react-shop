@@ -44,7 +44,7 @@ const Button = styled.p`
 	}
 `;
 
-const MobileProducts = ({ products: { products } }) => {
+const MobileProducts = ({ products }) => {
 	const match = useRouteMatch();
 	const dispatch = useDispatch();
 

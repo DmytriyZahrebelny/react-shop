@@ -32,7 +32,7 @@ const TextField = styled.input`
 `;
 
 const TopHeader = () => {
-	const productsNumber = useSelector(state => state.cartReducer.productsId);
+	const productsNumber = useSelector(state => state.cartStore.productsId);
 	const dispatch = useDispatch();
 	const history = useHistory();
 

@@ -1,8 +1,14 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
-import Shop from './views/Shop';
+import Cart from './components/Cart/Cart';
+import ShopMenu from './components/Shop/ShopMenu';
+import TabletProducts from './components/Shop/TabletProducts';
+import DesktopProducts from './components/Shop/DesktopProducts';
+import ShopPage from './components/Shop/ShopPage';
+import SearchPage from './components/Search/SearchPage';
 import { fetchProducts } from './stores/Products/productsOperations';
 
 const AppContainer = styled.div`
@@ -11,7 +17,7 @@ const AppContainer = styled.div`
 
 const App = () => {
 	const dispatch = useDispatch();
-	const products = useSelector(state => state.productsReducer.products);
+	const products = useSelector(state => state.productsStore);
 
 	useEffect(() => {
 		dispatch(fetchProducts());
@@ -20,7 +26,14 @@ const App = () => {
 	return (
 		<AppContainer className='App'>
 			<Header />
-			<Shop />
+			<Switch>
+				<Route exact path='/' component={ShopMenu} />
+				<Route path='/mobile' component={ShopPage} />
+				<Route path='/tablet' component={TabletProducts} />
+				<Route path='/desktop' component={DesktopProducts} />
+				<Route path='/search' component={SearchPage} />
+				<Route path='/cart' component={Cart} />
+			</Switch>
 		</AppContainer>
 	);
 };
