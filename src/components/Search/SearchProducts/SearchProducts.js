@@ -1,9 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
-import ProductLink from '../components/ProductLink';
-import { searchProductsSelector } from '../../stores/Header/slector';
+import ProductLink from '../../components/ProductLink';
+import { searchProductsSelector } from '../../../stores/Header/slector';
+import * as actions from '../../../stores/Cart/cartActions';
 
 export const ProductsList = styled.ul`
 	display: flex;
@@ -44,17 +45,28 @@ export const Button = styled.p`
 	}
 `;
 
+const NothingFoundTitle = styled.h1`
+	width: 1200px;
+	min-height: 800px;
+	margin: 0;
+	padding: 40px;
+`;
+
 const SearchProducts = () => {
+	const match = useRouteMatch();
+	const dispatch = useDispatch();
 	const searchProducts = useSelector(state => searchProductsSelector(state));
-	const history = useHistory();
+
+	if (!searchProducts.length) {
+		return <NothingFoundTitle>Nothing found</NothingFoundTitle>;
+	}
 
 	return (
 		<ProductsList>
 			{searchProducts.map(product => (
 				<ProductItem key={product.title}>
-					<ProductLink match={history.location} product={product} />
-					{/* <Button onClick={getProductId} id={product.id}> */}
-					<Button id={product.id}>Add to Cart</Button>
+					<ProductLink match={match} product={product} />
+					<Button onClick={() => dispatch(actions.addProduct(product.id))}>Add to Cart</Button>
 				</ProductItem>
 			))}
 		</ProductsList>
