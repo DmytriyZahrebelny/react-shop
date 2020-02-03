@@ -4,22 +4,24 @@ import { Link } from 'react-router-dom';
 
 const ProductsMenuContainer = styled.div`
 	display: flex;
-	width: 400px;
+	justify-content: space-between;
+	margin: 10px 0 0 30px;
+	width: 270px;
 `;
 
-const TestLink = styled(Link)`
-	display: inline-block;
-	padding: 15px 20px 15px;
-	font-size: 16px;
+const ProductLink = styled(Link)`
+	display: block;
+	font-size: 20px;
 	text-decoration: none;
-	color: #fff;
+	font-weight: bold;
+	color: #ffffff;
 `;
 
 const ProductsMenu = () => (
 	<ProductsMenuContainer>
-		<TestLink to='/mobile'>Mobile</TestLink>
-		<TestLink to='/tablet'>Tablet</TestLink>
-		<TestLink to='/desktop'>Desktop</TestLink>
+		<ProductLink to='/mobile'>Mobile</ProductLink>
+		<ProductLink to='/tablet'>Tablet</ProductLink>
+		<ProductLink to='/desktop'>Desktop</ProductLink>
 	</ProductsMenuContainer>
 );
 
