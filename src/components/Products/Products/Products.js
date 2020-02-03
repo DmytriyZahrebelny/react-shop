@@ -3,7 +3,7 @@ import { useRouteMatch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import ProductLink from '../../components/ProductLink';
-import * as actions from '../../../stores/Cart/cartActions';
+import * as actions from '../../../stores/Cart/cartStore';
 
 const ProductsList = styled.ul`
 	display: flex;

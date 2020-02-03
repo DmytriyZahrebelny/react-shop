@@ -4,7 +4,7 @@ import { useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import ProductLink from '../../components/ProductLink';
 import { searchProductsSelector } from '../../../stores/Header/slector';
-import * as actions from '../../../stores/Cart/cartActions';
+import * as actions from '../../../stores/Cart/cartStore';
 
 export const ProductsList = styled.ul`
 	display: flex;

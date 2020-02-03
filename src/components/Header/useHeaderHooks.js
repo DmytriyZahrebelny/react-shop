@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { searchProducts } from '../../stores/Header/headerActions';
+import { searchProducts } from '../../stores/Header/headerStore';
 
 export const useHeaderHooks = () => {
 	const history = useHistory();
