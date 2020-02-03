@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Cart from './components/Cart/Cart';
 import ShopMenu from './components/MainMenu/ShopMenu';
-import ShopPage from './components/Shop/ShopPage';
+import ProductsPage from './components/Products/ProductsPage';
 import SearchPage from './components/Search/SearchPage';
 import { fetchProducts } from './stores/Products/productsOperations';
 
@@ -25,7 +25,7 @@ const App = () => {
 			<Header />
 			<Switch>
 				<Route exact path='/' component={ShopMenu} />
-				<Route path={['/mobile', '/tablet', '/desktop']} component={ShopPage} />
+				<Route path={['/mobile', '/tablet', '/desktop']} component={ProductsPage} />
 				<Route path='/search' component={SearchPage} />
 				<Route path='/cart' component={Cart} />
 			</Switch>
