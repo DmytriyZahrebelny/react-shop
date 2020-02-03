@@ -1,4 +1,11 @@
-import * as constants from './headerConstants';
+const SEARCH_PRODUCTS = 'header/SEARCH_PRODUCTS';
+
+export const searchProducts = payload => {
+	return {
+		type: SEARCH_PRODUCTS,
+		payload,
+	};
+};
 
 const initialState = {
 	searchProductsWords: '',
@@ -6,7 +13,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
-		case constants.SEARCH_PRODUCTS:
+		case SEARCH_PRODUCTS:
 			return { ...state, searchProductsWords: action.payload };
 
 		default:

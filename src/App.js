@@ -7,7 +7,7 @@ import Cart from './components/Cart/Cart';
 import ShopMenu from './components/MainMenu/ShopMenu';
 import ProductsPage from './components/Products/ProductsPage';
 import SearchPage from './components/Search/SearchPage';
-import { fetchProducts } from './stores/Products/productsOperations';
+import { getProducts } from './stores/Products/productsStore';
 
 const AppContainer = styled.div`
 	font-family: Arial, Helvetica, sans-serif;
@@ -17,7 +17,7 @@ const App = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(fetchProducts());
+		dispatch(getProducts());
 	}, [dispatch]);
 
 	return (

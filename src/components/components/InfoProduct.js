@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import * as actions from '../../stores/Cart/cartActions';
+import * as actions from '../../stores/Cart/cartStore';
 
 export const Product = styled.div`
 	display: flex;

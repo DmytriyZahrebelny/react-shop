@@ -1,4 +1,9 @@
-import * as constants from './cartConstants';
+const ADD_PRODUCT = 'cart/ADD_PRODUCT';
+
+export const addProduct = payload => ({
+	type: ADD_PRODUCT,
+	payload,
+});
 
 const initialState = {
 	productsId: [],
@@ -6,7 +11,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
-		case constants.ADD_PRODUCT:
+		case ADD_PRODUCT:
 			return { ...state, productsId: [...state.productsId, action.payload] };
 
 		default:
