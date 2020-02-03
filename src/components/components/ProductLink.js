@@ -13,7 +13,10 @@ const ProductName = styled.p`
 	margin: 0 auto;
 	padding: 10px;
 	text-align: center;
-	color: #ff8f33;
+	color: #1b1b1b;
+	white-space: pre;
+	text-overflow: ellipsis;
+	overflow: hidden;
 `;
 
 const ProductImg = styled.img`
@@ -21,13 +24,11 @@ const ProductImg = styled.img`
 	height: 265px;
 `;
 
-const ProductLink = ({ match: { path }, product }) => {
-	return (
-		<LinkProduct to={`${path}/${product.id}`}>
-			<ProductImg src={product.image} alt={product.id} />
-			<ProductName>{product.title}</ProductName>
-		</LinkProduct>
-	);
-};
+const ProductLink = ({ match: { path }, product }) => (
+	<LinkProduct to={`${path}/${product.id}`}>
+		<ProductImg src={product.image} alt={product.id} />
+		<ProductName>{product.title}</ProductName>
+	</LinkProduct>
+);
 
 export default ProductLink;

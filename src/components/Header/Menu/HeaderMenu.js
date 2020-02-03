@@ -15,7 +15,7 @@ const Menu = styled.div`
 
 const LoginLink = styled(Link)`
 	display: block;
-	margin-top: 5px;
+	margin: 5px 18px 0 0;
 	text-decoration: none;
 `;
 

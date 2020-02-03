@@ -20,7 +20,7 @@ export const ShopMenuLink = styled(Link)`
 	padding: 20px;
 	font-size: 22px;
 	text-align: center;
-	color: #fb4128;
+	color: #000000;
 	text-decoration: none;
 
 	:hover {
