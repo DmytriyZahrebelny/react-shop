@@ -21,14 +21,14 @@ const Button = styled.input`
 	margin: 0 auto;
 	font-size: 20px;
 	text-align: center;
-	color: #fb4128;
+	color: #1b1b1b;
 	background-color: inherit;
-	border: 2px solid #fb4128;
+	border: 2px solid #1b1b1b;
 	border-radius: 24px;
 	cursor: pointer;
 
 	:hover {
-		background-color: #ff5122;
+		background-color: #1b1b1b;
 		color: #ffffff;
 	}
 `;

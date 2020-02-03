@@ -4,7 +4,7 @@ import TopHeader from './TopHeader/TopHeader';
 import HeaderMenu from './Menu/HeaderMenu';
 
 const HeaderContainer = styled.header`
-	background-color: #ff5122;
+	background-color: #1b1b1b;
 `;
 
 const Header = () => (

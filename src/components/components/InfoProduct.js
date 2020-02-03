@@ -29,13 +29,13 @@ export const Button = styled.a`
 	font-size: 20px;
 	text-align: center;
 	text-decoration: none;
-	color: #fb4128;
-	border: 2px solid #fb4128;
+	color: #1b1b1b;
+	border: 2px solid #1b1b1b;
 	border-radius: 24px;
 
 	:hover {
 		color: #ffffff;
-		background-color: #ff5122;
+		background-color: #1b1b1b;
 	}
 `;
 

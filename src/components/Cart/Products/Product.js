@@ -6,7 +6,7 @@ const CartProduct = styled.li`
 	justify-content: space-between;
 	width: 830px;
 	padding: 10px 0;
-	border-bottom: 2px solid #fb4128;
+	border-bottom: 2px solid #1b1b1b;
 `;
 
 const ProductImg = styled.img`
