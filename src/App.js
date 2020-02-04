@@ -7,6 +7,7 @@ import Cart from './components/Cart/Cart';
 import ShopMenu from './components/MainMenu/ShopMenu';
 import ProductsPage from './components/Products/ProductsPage';
 import SearchPage from './components/Search/SearchPage';
+import AuthPage from './components/Auth/AuthPage';
 import { getProducts } from './stores/Products/productsStore';
 
 const AppContainer = styled.div`
@@ -28,6 +29,7 @@ const App = () => {
 				<Route path={['/mobile', '/tablet', '/desktop']} component={ProductsPage} />
 				<Route path='/search' component={SearchPage} />
 				<Route path='/cart' component={Cart} />
+				<Route path='/auth' component={AuthPage} />
 			</Switch>
 		</AppContainer>
 	);
