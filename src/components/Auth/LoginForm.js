@@ -1,8 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useFormik } from 'formik';
+import { useForm } from 'react-hook-form';
+import EmailField from '../components/FormControls/EmailField';
+import PasswordField from '../components/FormControls/PasswordField';
 
 const FormContainer = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	width: 100%;
 	padding-top: 30px;
 `;
@@ -28,32 +33,18 @@ export const Button = styled.button`
 `;
 
 const LoginForm = () => {
-	const formik = useFormik({
-		initialValues: {
-			email: '',
-			password: '',
-		},
-		onSubmit: values => console.log(JSON.stringify(values)),
-	});
-
+	const { handleSubmit, register, errors } = useForm();
+	const onSubmit = data => console.log(data);
 	return (
 		<FormContainer>
-			<form onSubmit={formik.handleSubmit}>
-				<input
-					id='email'
-					name='email'
-					type='email'
-					onChange={formik.handleChange}
-					value={formik.values.firstName}
-					placeholder='Username'
-				/>
-				<input
-					id='password'
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<EmailField name='email' register={register} errors={errors} placeholder='Email Address' />
+				<PasswordField
 					name='password'
-					type='password'
-					onChange={formik.handleChange}
-					value={formik.values.firstName}
+					register={register}
+					errors={errors}
 					placeholder='Password'
+					isValidate={false}
 				/>
 				<Button type='submit' label='submit'>
 					Submit
