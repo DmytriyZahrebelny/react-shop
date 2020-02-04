@@ -24,33 +24,9 @@ const LinkBox = styled.div`
 	justify-content: space-around;
 	width: 500px;
 	box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.75);
-	border-bottom: 1px solid #ff5122;
+	border-bottom: 1px solid #1b1b1b;
 	box-shadow: none;
 `;
-
-// const RegistrationLink = styled(Link)`
-// 	display: block;
-// 	width: 50%;
-// 	padding: 20px 0;
-// 	font-size: 18px;
-// 	text-align: center;
-// 	text-decoration: none;
-// 	color: ${({ activeLink }) => (activeLink ? '#FF5122' : '#ffffff')};
-// 	background-color: ${({ activeLink }) => (activeLink ? '#ffffff' : '#FF5122')};
-// 	border-bottom: 1px solid #ff5122;
-// `;
-
-// const LoginLink = styled(Link)`
-// 	display: block;
-// 	width: 50%;
-// 	padding: 20px 0;
-// 	font-size: 18px;
-// 	text-align: center;
-// 	text-decoration: none;
-// 	color: ${({ activeLink }) => (!activeLink ? '#FF5122' : '#ffffff')};
-// 	background-color: ${({ activeLink }) => (!activeLink ? '#ffffff' : '#FF5122')};
-// 	border-bottom: 1px solid #ff5122;
-// `;
 
 const LoginLink = ({ activeLink, onLoginLinkClick, children }) => {
 	const LinkStyle = styled(Link)`
@@ -60,9 +36,9 @@ const LoginLink = ({ activeLink, onLoginLinkClick, children }) => {
 		font-size: 18px;
 		text-align: center;
 		text-decoration: none;
-		color: ${() => (!activeLink ? '#FF5122' : '#ffffff')};
-		background-color: ${() => (!activeLink ? '#ffffff' : '#FF5122')};
-		border-bottom: 1px solid #ff5122;
+		color: ${() => (!activeLink ? '#1b1b1b' : '#ffffff')};
+		background-color: ${() => (!activeLink ? '#ffffff' : '#1b1b1b')};
+		border-bottom: 1px solid #1b1b1b;
 	`;
 
 	return (
@@ -80,9 +56,9 @@ const RegistrationLink = ({ activeLink, onRegistrationLinkClick, children }) => 
 		font-size: 18px;
 		text-align: center;
 		text-decoration: none;
-		color: ${() => (activeLink ? '#FF5122' : '#ffffff')};
-		background-color: ${() => (activeLink ? '#ffffff' : '#FF5122')};
-		border-bottom: 1px solid #ff5122;
+		color: ${() => (activeLink ? '#1b1b1b' : '#ffffff')};
+		background-color: ${() => (activeLink ? '#ffffff' : '#1b1b1b')};
+		border-bottom: 1px solid #1b1b1b;
 	`;
 
 	return (
