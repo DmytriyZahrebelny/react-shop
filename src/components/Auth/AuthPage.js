@@ -81,7 +81,10 @@ const AuthPage = () => {
 					<LoginLink activeLink={activeLink} onLoginLinkClick={onLoginLinkClick}>
 						Login
 					</LoginLink>
-					<RegistrationLink activeLink={activeLink} onRegistrationLinkClick={onRegistrationLinkClick}>
+					<RegistrationLink
+						activeLink={activeLink}
+						onRegistrationLinkClick={onRegistrationLinkClick}
+					>
 						Registration
 					</RegistrationLink>
 				</LinkBox>

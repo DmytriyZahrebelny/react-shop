@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import ProductLink from '../../components/ProductLink';
+import Button from '../../components/FormControls/Button';
 import { searchProductsSelector } from '../../../stores/Header/slector';
 import * as actions from '../../../stores/Cart/cartStore';
 
@@ -23,25 +24,6 @@ export const ProductItem = styled.li`
 
 	:hover {
 		box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.75);
-	}
-`;
-
-export const Button = styled.p`
-	display: block;
-	width: 200px;
-	padding: 10px;
-	margin: 0 auto;
-	padding: 10px;
-	font-size: 20px;
-	text-align: center;
-	color: #1b1b1b;
-	border: 2px solid #1b1b1b;
-	border-radius: 24px;
-	cursor: pointer;
-
-	:hover {
-		background-color: #1b1b1b;
-		color: #ffffff;
 	}
 `;
 

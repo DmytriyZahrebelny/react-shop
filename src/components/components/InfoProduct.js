@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import Button from './FormControls/Button';
 import * as actions from '../../stores/Cart/cartStore';
 
 export const Product = styled.div`
@@ -10,6 +11,10 @@ export const Product = styled.div`
 	padding: 20px 0;
 	margin: 10px auto 0;
 	background-color: #ffffff;
+
+	button {
+		margin: 10px 0 0;
+	}
 `;
 
 export const ProductTitle = styled.h1`
@@ -18,25 +23,8 @@ export const ProductTitle = styled.h1`
 
 export const ProductDescription = styled.p`
 	width: 400px;
+	margin-bottom: 40px;
 	color: #000000;
-`;
-
-export const Button = styled.a`
-	display: block;
-	width: 200px;
-	padding: 10px 20px;
-	margin: 50px 0 0 0;
-	font-size: 20px;
-	text-align: center;
-	text-decoration: none;
-	color: #1b1b1b;
-	border: 2px solid #1b1b1b;
-	border-radius: 24px;
-
-	:hover {
-		color: #ffffff;
-		background-color: #1b1b1b;
-	}
 `;
 
 export const ProductPrice = styled.p`
@@ -63,10 +51,6 @@ const InfoProduct = ({ products }) => {
 	const currentProduct = products.filter(product => product.id === match.params.id);
 	const [product] = currentProduct;
 
-	const getProductId = evt => {
-		dispatch(actions.addProduct(evt.target.id));
-	};
-
 	return (
 		<Product>
 			<div>
@@ -76,7 +60,7 @@ const InfoProduct = ({ products }) => {
 			<div>
 				<ProductTitle>{product.title}</ProductTitle>
 				<ProductDescription>{product.description}</ProductDescription>
-				<Button id={product.id} onClick={getProductId} href='#'>
+				<Button onClick={() => dispatch(actions.addProduct(product.id))} href='#'>
 					Add to Cart
 				</Button>
 			</div>
